@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Tabling" parent="">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.H0" parent="TextAppearance.Tabling">
+        <item name="android:textSize">24dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.H1" parent="TextAppearance.Tabling">
+        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.H2" parent="TextAppearance.Tabling">
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Body1.SemiBold" parent="TextAppearance.Tabling">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Body1.Regular" parent="TextAppearance.Tabling">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.Body2.SemiBold" parent="TextAppearance.Tabling">
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Body2.Regular" parent="TextAppearance.Tabling">
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.Caption1.SemiBold" parent="TextAppearance.Tabling">
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Caption1.Regular" parent="TextAppearance.Tabling">
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.Caption2" parent="TextAppearance.Tabling">
+        <item name="android:textSize">11dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+</resources>
