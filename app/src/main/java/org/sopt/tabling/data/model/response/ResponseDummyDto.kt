@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 import org.sopt.tabling.domain.model.DummyData
 
 @Serializable
-data class ResponseData(
+data class ResponseDummyDto(
     val status: Int,
     val message: String,
     val data: ResponseData,
