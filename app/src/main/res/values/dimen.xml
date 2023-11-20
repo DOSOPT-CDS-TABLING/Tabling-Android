@@ -12,5 +12,6 @@
     <dimen name="spacing26">26dp</dimen>
 
     <!--Widget Size-->
-    <dimen name="button_height">56dp</dimen>
+    <dimen name="button_height_56">56dp</dimen>
+    <dimen name="button_height_49">49dp</dimen>
 </resources>
