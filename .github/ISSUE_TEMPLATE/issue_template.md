@@ -1,13 +1,13 @@
-## Related issue 🛠
-- closed #이슈넘버
+---
+name: ISSUE_TEMPLATE
+about: "기능, UI, 문서 개선 및 추가 요청을 위한 템플릿입니다 \U0001F680"
+title: ''
+labels: ''
+assignees: ''
 
-## Work Description ✏️
-- 작업 내용
+---
 
-## Screenshot 📸
-<img src="" width="360"/>
+## What is this issue? 🛠
 
-## Uncompleted Tasks 😅
-- [ ] Task1
-
-## To Reviewers 📢
+## Progress 🏃‍♀️
+- [ ]
