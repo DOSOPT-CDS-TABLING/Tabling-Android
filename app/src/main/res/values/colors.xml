@@ -23,4 +23,7 @@
     <color name="gray_700">#17171B</color>
     <color name="gray_800">#101012</color>
 
+    <!--gradient-->
+    <color name="transparent_black">#80000000</color>
+
 </resources>
