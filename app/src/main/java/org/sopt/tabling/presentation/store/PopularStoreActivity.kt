@@ -27,8 +27,11 @@ class PopularStoreActivity :
     }
 
     private fun setPopularStoreList() {
-        storeViewModel.popularStoreList.observe(this, Observer { storeList ->
-            popularStoreAdapter.setStoreList(storeList)
-        })
+        storeViewModel.popularStoreList.observe(
+            this,
+            Observer { storeList ->
+                popularStoreAdapter.setStoreList(storeList)
+            }
+        )
     }
 }
