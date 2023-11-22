@@ -1,169 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_popular_store_number"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/iv_popular_store"
-        tools:text="1" />
+    <data>
 
-    <ImageView
-        android:id="@+id/iv_popular_store"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_number"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        <variable
+            name="data"
+            type="org.sopt.tabling.data.model.response.ResponsePopularStoreDto.StoreData" />
+    </data>
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chip_popular_store_waiting_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:checkable="false"
-        android:textAppearance="@style/TextAppearance.Caption2"
-        android:textColor="@color/white"
-        app:chipBackgroundColor="@color/primary"
-        app:chipStrokeColor="@color/primary"
-        app:layout_constraintStart_toStartOf="@id/iv_popular_store"
-        app:layout_constraintTop_toTopOf="@id/iv_popular_store"
-        style="@style/Widget.Material3.Chip.Style"
-        android:layout_marginTop="4dp"
-        tools:text="대기 14팀" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_popular_store_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:textAppearance="@style/TextAppearance.Body1.SemiBold"
-        android:textColor="@color/gray_400"
-        app:layout_constraintStart_toEndOf="@id/iv_popular_store"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="파이브가이즈 여의도" />
+        <TextView
+            android:id="@+id/tv_popular_store_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(data.shop_id)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_popular_store"
+            tools:text="1" />
 
-    <ImageView
-        android:id="@+id/ic_popular_store_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_review"
-        app:layout_constraintStart_toEndOf="@id/iv_popular_store"
-        app:layout_constraintTop_toTopOf="@id/tv_popular_store_review"
-        app:srcCompat="@drawable/ic_star_yellow_14px" />
+        <ImageView
+            android:id="@+id/iv_popular_store"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@{data.profile_photo_url}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_number"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="1dp"
-        android:textAppearance="@style/TextAppearance.Body2.Regular"
-        android:textColor="@color/gray_800"
-        app:layout_constraintStart_toEndOf="@id/ic_popular_store_star"
-        app:layout_constraintTop_toBottomOf="@id/tv_popular_store_name"
-        tools:text="3.9" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_popular_store_waiting_num"
+            style="@style/Widget.Material3.Chip.Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:checkable="false"
+            android:text="@{String.valueOf(data.current_waiting)}"
+            android:textAppearance="@style/TextAppearance.Caption2"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/primary"
+            app:chipStrokeColor="@color/primary"
+            app:layout_constraintStart_toStartOf="@id/iv_popular_store"
+            app:layout_constraintTop_toTopOf="@id/iv_popular_store"
+            tools:text="대기 14팀" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_review_cnt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:textAppearance="@style/TextAppearance.Body2.Regular"
-        android:textColor="@color/gray_800"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_review"
-        app:layout_constraintTop_toBottomOf="@id/tv_popular_store_name"
-        tools:text="(64)" />
+        <TextView
+            android:id="@+id/tv_popular_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@{data.name}"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/gray_400"
+            app:layout_constraintStart_toEndOf="@id/iv_popular_store"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="파이브가이즈 여의도" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_food_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="1dp"
-        android:textAppearance="@style/TextAppearance.Body2.Regular"
-        android:textColor="@color/gray_200"
-        app:layout_constraintStart_toEndOf="@id/iv_popular_store"
-        app:layout_constraintTop_toBottomOf="@id/tv_popular_store_review"
-        tools:text="양식" />
+        <ImageView
+            android:id="@+id/ic_popular_store_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_review"
+            app:layout_constraintStart_toEndOf="@id/iv_popular_store"
+            app:layout_constraintTop_toTopOf="@id/tv_popular_store_review"
+            app:srcCompat="@drawable/ic_star_yellow_14px" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="·"
-        app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_food_type"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_food_type"
-        app:layout_constraintTop_toTopOf="@id/tv_popular_store_food_type" />
+        <TextView
+            android:id="@+id/tv_popular_store_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="1dp"
+            android:text="@{String.valueOf(data.average_star)}"
+            android:textAppearance="@style/TextAppearance.Body2.Regular"
+            android:textColor="@color/gray_800"
+            app:layout_constraintStart_toEndOf="@id/ic_popular_store_star"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_name"
+            tools:text="3.9" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:textAppearance="@style/TextAppearance.Body2.Regular"
-        android:textColor="@color/gray_200"
-        app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_food_type"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_."
-        app:layout_constraintTop_toTopOf="@id/tv_popular_store_food_type"
-        tools:text="여의도동" />
+        <TextView
+            android:id="@+id/tv_popular_store_review_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@{String.valueOf(data.review_count)}"
+            android:textAppearance="@style/TextAppearance.Body2.Regular"
+            android:textColor="@color/gray_800"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_review"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_name"
+            tools:text="(64)" />
 
-    <ImageView
-        android:id="@+id/ic_popular_store_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintStart_toEndOf="@id/iv_popular_store"
-        app:layout_constraintTop_toBottomOf="@id/tv_popular_store_food_type"
-        app:srcCompat="@drawable/ic_people_grey_24px" />
+        <TextView
+            android:id="@+id/tv_popular_store_food_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="1dp"
+            android:text="@{data.shop_category}"
+            android:textAppearance="@style/TextAppearance.Body2.Regular"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/iv_popular_store"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_review"
+            tools:text="양식" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:text="@string/item_popular_store_avg"
-        android:textAppearance="@style/TextAppearance.Caption1.Regular"
-        android:textColor="@color/gray_300"
-        app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
-        app:layout_constraintStart_toEndOf="@id/ic_popular_store_people"
-        app:layout_constraintTop_toTopOf="@id/ic_popular_store_people" />
+        <TextView
+            android:id="@+id/tv_popular_store_."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="·"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_food_type"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_food_type"
+            app:layout_constraintTop_toTopOf="@id/tv_popular_store_food_type" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_waiting_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
-        android:textColor="@color/gray_300"
-        app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_1"
-        app:layout_constraintTop_toTopOf="@id/ic_popular_store_people"
-        tools:text="4753" />
+        <TextView
+            android:id="@+id/tv_popular_store_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="@{data.short_address}"
+            android:textAppearance="@style/TextAppearance.Body2.Regular"
+            android:textColor="@color/gray_200"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_food_type"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_."
+            app:layout_constraintTop_toTopOf="@id/tv_popular_store_food_type"
+            tools:text="여의도동" />
 
-    <TextView
-        android:id="@+id/tv_popular_store_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/item_popular_store_waiting"
-        android:textAppearance="@style/TextAppearance.Caption1.Regular"
-        android:textColor="@color/gray_300"
-        app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
-        app:layout_constraintStart_toEndOf="@id/tv_popular_store_waiting_number"
-        app:layout_constraintTop_toTopOf="@id/ic_popular_store_people" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/ic_popular_store_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toEndOf="@id/iv_popular_store"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_food_type"
+            app:srcCompat="@drawable/ic_people_grey_24px" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/item_popular_store_avg"
+            android:textAppearance="@style/TextAppearance.Caption1.Regular"
+            android:textColor="@color/gray_300"
+            app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
+            app:layout_constraintStart_toEndOf="@id/ic_popular_store_people"
+            app:layout_constraintTop_toTopOf="@id/ic_popular_store_people" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_waiting_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(data.average_waiting)}"
+            android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+            android:textColor="@color/gray_300"
+            app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_1"
+            app:layout_constraintTop_toTopOf="@id/ic_popular_store_people"
+            tools:text="4753" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_popular_store_waiting"
+            android:textAppearance="@style/TextAppearance.Caption1.Regular"
+            android:textColor="@color/gray_300"
+            app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_waiting_number"
+            app:layout_constraintTop_toTopOf="@id/ic_popular_store_people" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

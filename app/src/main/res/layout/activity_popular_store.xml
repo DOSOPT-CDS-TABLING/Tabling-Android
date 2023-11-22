@@ -9,7 +9,6 @@
             name="storeViewModel"
             type="org.sopt.tabling.presentation.store.StoreViewModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -161,6 +160,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_store_area"
-            tools:listitem="@layout/item_popular_store" />
+            tools:listitem="@layout/item_popular_store"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
