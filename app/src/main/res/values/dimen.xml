@@ -14,4 +14,5 @@
     <!--Widget Size-->
     <dimen name="button_height_56">56dp</dimen>
     <dimen name="button_height_49">49dp</dimen>
+    <dimen name="tab_layout_height_45">45dp</dimen>
 </resources>
