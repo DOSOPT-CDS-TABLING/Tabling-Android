@@ -9,6 +9,7 @@
             name="storeViewModel"
             type="org.sopt.tabling.presentation.store.StoreViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,6 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tb_popular_store"
@@ -53,33 +55,34 @@
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Suggestion.Choice"
+                style="@style/Style.Material3.Chip.Suggestion.Waiting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="true"
                 android:text="@string/area_all" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Suggestion.Custom"
+                style="@style/Style.Material3.Chip.Suggestion.Waiting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/area_seoul_gangnam" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Suggestion.Custom"
+                style="@style/Style.Material3.Chip.Suggestion.Waiting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/area_seoul_apgujeong" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Suggestion.Custom"
+                style="@style/Style.Material3.Chip.Suggestion.Waiting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/area_seoul_samsung" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Suggestion.Custom"
+                style="@style/Style.Material3.Chip.Suggestion.Waiting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/area_seoul_seocho" />
 
         </com.google.android.material.chip.ChipGroup>
@@ -157,11 +160,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_store_area"
-            tools:listitem="@layout/item_popular_store"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            tools:listitem="@layout/item_popular_store" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
