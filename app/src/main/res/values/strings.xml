@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Tabling-Android</string>
+
+    <!-- shop detail -->
+    <string name="shop_detail_map">지도보기</string>
+    <string name="shop_detail_tab_layout_home">홈</string>
+    <string name="shop_detail_tab_layout_menu_list">전체메뉴</string>
+    <string name="shop_detail_tab_layout_recent_review">최근리뷰</string>
+    <string name="shop_detail_reserve">원격줄서기</string>
+    <string name="shop_detail_reservation_unavailable">예약 불가</string>
+    <string name="shop_detail_order_unavailable">주문 불가</string>
+
+    <!-- shop detail home -->
+    <string name="shop_detail_home_business_info">영업정보</string>
+    <string name="shop_detail_home_sales_time">운영시간</string>
+    <string name="shop_detail_home_rest_time">휴식시간</string>
+    <string name="shop_detail_home_rest_day">휴무일</string>
+    <string name="shop_detail_home_phone_number">전화번호</string>
+    <string name="shop_detail_home_shop_pick">매장 PICK!</string>
+    <string name="shop_detail_home_amenity">편의시설</string>
+    <string name="shop_detail_home_wifi">무선인터넷</string>
+    <string name="shop_detail_home_parking">주차 이용 가능</string>
+    <string name="shop_detail_home_rest_room">남녀 화장실 구분</string>
+    <string name="shop_detail_home_introduce_content">매장소개</string>
+
+    <!-- shop detail menu list -->
+    <string name="shop_detail_menu_list_full_menu">전체 메뉴</string>
+    <string name="shop_detail_menu_list_full_menu_detail">메뉴 전체보기</string>
+
+    <!-- shop detail recent review -->
+    <string name="shop_detail_recent_review_total_star">전체 평점</string>
+    <string name="shop_detail_recent_review_food_taste">음식 맛</string>
+    <string name="shop_detail_recent_review_mood">분위기</string>
+    <string name="shop_detail_recent_review_kindness">친절도</string>
+    <string name="shop_detail_recent_review_cleanliness">청결상태</string>
+    <string name="shop_detail_recent_review_full_review_detail">리뷰 전체보기</string>
+
 </resources>
