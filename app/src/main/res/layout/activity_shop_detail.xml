@@ -66,6 +66,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_shop_detail_shop_img_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing16"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.Regular"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/layout_shop_detail_shop_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1/6" />
+
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_shop_detail_waiting"
             style="@style/Widget.Material3.Chip.Style.Radius4.ShopDetailWaiting"
@@ -193,23 +205,7 @@
             app:tabRippleColor="@color/white"
             app:tabSelectedTextColor="@color/gray_600"
             app:tabTextAppearance="@style/TextAppearance.Body1.SemiBold"
-            app:tabTextColor="@color/gray_200">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/shop_detail_tab_layout_home" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/shop_detail_tab_layout_menu_list" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/shop_detail_tab_layout_recent_review" />
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/gray_200" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_shop_detail_tab"
@@ -222,7 +218,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tl_shop_detail" />
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_shop_detail_reserve"
             style="@style/Widget.OutlinedButton.Basic"
             android:layout_width="0dp"
@@ -237,7 +233,7 @@
             app:layout_constraintEnd_toStartOf="@id/btn_shop_detail_reservation_unavailable"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_shop_detail_reservation_unavailable"
             style="@style/Widget.OutlinedButton.Basic"
             android:layout_width="0dp"
@@ -252,7 +248,7 @@
             app:layout_constraintStart_toEndOf="@id/btn_shop_detail_reserve"
             app:layout_constraintTop_toTopOf="@id/btn_shop_detail_reserve" />
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_shop_detail_order_unavailable"
             style="@style/Widget.OutlinedButton.Basic"
             android:layout_width="0dp"
