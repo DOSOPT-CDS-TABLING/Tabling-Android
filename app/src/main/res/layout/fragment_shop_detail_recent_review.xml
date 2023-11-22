@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        tools:context=".presentation.shopDetail.ShopDetailRecentReviewFragment">
+        tools:context=".presentation.shopDetailRecentReview.ShopDetailRecentReviewFragment">
 
         <View
             android:id="@+id/view_shop_detail_recent_review_top_divider"

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        tools:context=".presentation.shopDetail.ShopDetailMenuListFragment">
+        tools:context=".presentation.shopDetailMenuList.ShopDetailMenuListFragment">
 
         <View
             android:id="@+id/view_shop_detail_menu_list_top_divider"
