@@ -9,7 +9,7 @@ class StoreViewModel : ViewModel() {
     val popularStoreList = _popularStoreList
 
     fun setDummyList() {
-        val dummyPopularStoreDataList = listOf<ResponsePopularStoreDto.StoreData>(
+        _popularStoreList.value = listOf(
             ResponsePopularStoreDto.StoreData(
                 1,
                 "파이브가이즈 여의도",
@@ -78,6 +78,5 @@ class StoreViewModel : ViewModel() {
                 "https://github-production-user-asset-6210df.s3.amazonaws.com/67463603/284251896-4d2f58ad-11c6-466a-828a-bd4290e064e9.png"
             ),
         )
-        _popularStoreList.value = dummyPopularStoreDataList
     }
 }
