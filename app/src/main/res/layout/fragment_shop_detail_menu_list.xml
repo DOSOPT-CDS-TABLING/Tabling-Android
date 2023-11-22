@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:context=".presentation.shopDetail.ShopDetailMenuListFragment">
+
+        <View
+            android:id="@+id/view_shop_detail_menu_list_top_divider"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@color/gray_000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_shop_detail_menu_list_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="@dimen/spacing26"
+            android:text="@string/shop_detail_menu_list_full_menu"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/gray_800"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_shop_detail_menu_list_top_divider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_shop_detail_menu_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shop_detail_menu_list_title"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_shop_detail_menu_list" />
+
+        <include
+            android:id="@+id/include_shop_detail_menu_list_detail_btn"
+            layout="@layout/view_detail_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="19dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_shop_detail_menu_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
