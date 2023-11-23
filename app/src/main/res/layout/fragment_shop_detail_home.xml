@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="shopDetailViewModel"
+            type="org.sopt.tabling.presentation.shopDetail.ShopDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -169,7 +172,6 @@
             android:layout_marginTop="@dimen/spacing12"
             android:layout_marginEnd="@dimen/spacing16"
             app:chipSpacing="6dp"
-            app:chipSpacingHorizontal="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/gl_start"
             app:layout_constraintTop_toBottomOf="@id/tv_shop_detail_home_shop_pick" />
