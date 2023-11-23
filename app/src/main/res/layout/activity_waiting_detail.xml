@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="dummyViewModel"
-            type="org.sopt.tabling.presentation.dummy.DummyViewModel" />
+            name="waitingData"
+            type="org.sopt.tabling.data.model.response.ResponseWaitingDetailDto.WaitingDetailData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
+            android:text="@{waitingData.shopName}"
             android:textAppearance="@style/TextAppearance.H1"
             android:textColor="@color/gray_700"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,22 +57,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginTop="3dp"
-            android:text="@string/waiting_number_primary"
+            android:text="@{@string/waiting_number_primary(waitingData.waitingNumber)}"
             android:textAppearance="@style/TextAppearance.H2"
             android:textColor="@color/primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_name"
+            tools:text="@string/waiting_number_primary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_8dp_bg_gray_700"
             android:layout_marginTop="9dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:paddingTop="13dp"
-            android:paddingBottom="13dp"
             android:layout_marginEnd="6dp"
+            android:background="@drawable/shape_8dp_bg_gray_700"
+            android:paddingStart="12dp"
+            android:paddingTop="13dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tb_waiting_detail">
 
@@ -89,10 +91,11 @@
                 android:id="@+id/tv_front_waiting_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/front_waiting_number"
+                android:text="@{@string/front_waiting_number(waitingData.beforeCount)}"
                 android:textAppearance="@style/TextAppearance.H1"
                 android:textColor="@color/primary"
                 app:layout_constraintEnd_toStartOf="@id/tv_front_waiting_team"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_front_waiting" />
 
@@ -147,7 +150,7 @@
 
         <View
             android:id="@+id/view_waiting_horizontal_3dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="3dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
@@ -171,7 +174,7 @@
 
         <View
             android:id="@+id/view_waiting_horizontal_1dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -199,6 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:text="@{waitingData.orderDate}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
@@ -223,6 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:text="@{@string/waiting_number_data(waitingData.waitingNumber)}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
@@ -247,6 +252,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:text="@{@string/waiting_person_data(waitingData.personCount)}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
@@ -271,6 +277,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:text="@{waitingData.orderStatus}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
@@ -295,6 +302,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:text="@{@string/waiting_total_price_data(waitingData.totalPrice)}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_500"
             app:layout_constraintEnd_toEndOf="parent"
@@ -315,8 +323,8 @@
 
         <View
             android:id="@+id/view_waiting_horizontal_3dp_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="3dp"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginEnd="16dp"
@@ -331,11 +339,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginTop="8dp"
-            android:text="@string/waiting_request_default"
+            android:text="@{waitingData.requestContent}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_3dp_sec" />
+            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_3dp_sec"
+            tools:text="@string/waiting_request_default" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
