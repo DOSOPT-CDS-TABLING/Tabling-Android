@@ -69,6 +69,8 @@
     <style name="Widget.Material3.Chip.Style.Radius99.Pick" parent="Widget.Material3.Chip.Style.Radius99">
         <item name="android:paddingVertical">7dp</item>
         <item name="chipStrokeColor">@color/gray_100</item>
+        <item name="textStartPadding">12dp</item>
+        <item name="textEndPadding">12dp</item>
         <item name="chipStrokeWidth">0.8dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Caption1.SemiBold</item>
         <item name="android:textColor">@color/gray_400</item>
@@ -83,6 +85,12 @@
         <item name="android:textColor">@color/selector_popular_store_chip_text</item>
         <item name="chipStrokeColor">@color/selector_popular_store_chip_stroke</item>
         <item name="chipBackgroundColor">@color/selector_popular_store_chip_background</item>
+    </style>
+
+    <style name="Style.Material3.Chip.Suggestion.Waiting.Item" parent="Widget.Material3.Chip.Style">
+        <item name="android:textAppearance">@style/TextAppearance.Caption2</item>
+        <item name="chipStrokeColor">@android:color/transparent</item>
+        <item name="android:checkable">false</item>
     </style>
 
 </resources>

@@ -15,22 +15,22 @@ data class ResponsePopularStoreDto(
     @Serializable
     data class StoreData(
         @SerialName("shop_id")
-        val shop_id: Int,
+        val shopId: Int,
         @SerialName("name")
         val name: String,
         @SerialName("average_star")
-        val average_star: Double,
+        val averageStar: Double,
         @SerialName("review_count")
-        val review_count: Int,
+        val reviewCount: Int,
         @SerialName("shop_category")
-        val shop_category: String,
+        val shopCategory: String,
         @SerialName("short_address")
-        val short_address: String,
+        val shortAddress: String,
         @SerialName("average_waiting")
-        val average_waiting: Int,
+        val averageWaiting: Int,
         @SerialName("current_waiting")
-        val current_waiting: Int,
+        val currentWaiting: Int,
         @SerialName("profile_photo_url")
-        val profile_photo_url: String,
+        val profilePhotoUrl: String,
     )
 }

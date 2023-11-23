@@ -15,7 +15,7 @@ class PopularStoreAdapter(context: Context) :
     inner class PopularStoreViewHolder(val binding: ItemPopularStoreBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(storeData: ResponsePopularStoreDto.StoreData) {
-            binding.data = storeData
+            binding.storeData = storeData
         }
     }
 

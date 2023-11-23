@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="data"
+            name="storeData"
             type="org.sopt.tabling.data.model.response.ResponsePopularStoreDto.StoreData" />
     </data>
 
@@ -18,7 +18,7 @@
             android:id="@+id/tv_popular_store_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(data.shop_id)}"
+            android:text="@{String.valueOf(storeData.shopId)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/iv_popular_store"
@@ -32,7 +32,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            app:image="@{data.profile_photo_url}"
+            app:image="@{storeData.profilePhotoUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toEndOf="@id/tv_popular_store_number"
@@ -41,17 +41,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_popular_store_waiting_num"
-            style="@style/Widget.Material3.Chip.Style"
+            style="@style/Style.Material3.Chip.Suggestion.Waiting.Item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="4dp"
-            android:checkable="false"
-            android:text="@{data.current_waiting == 0 ? @string/item_popular_store_no_waiting : @string/item_popular_store_waiting(data.current_waiting) }"
-            android:textAppearance="@style/TextAppearance.Caption2"
-            android:textColor="@{data.current_waiting == 0 ? @color/gray_200 : @color/white }"
-            app:chipBackgroundColor="@{data.current_waiting == 0 ? @color/gray_600 : @color/primary }"
-            app:chipStrokeColor="@android:color/transparent"
+            android:text="@{storeData.currentWaiting == 0 ? @string/popular_store_no_waiting_team : @string/popular_store_waiting_team(storeData.currentWaiting) }"
+            android:textColor="@{storeData.currentWaiting == 0 ? @color/gray_200 : @color/white }"
+            app:chipBackgroundColor="@{storeData.currentWaiting == 0 ? @color/gray_600 : @color/primary }"
             app:layout_constraintStart_toStartOf="@id/iv_popular_store"
             app:layout_constraintTop_toTopOf="@id/iv_popular_store"
             tools:text="대기 14팀" />
@@ -62,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:text="@{data.name}"
+            android:text="@{storeData.name}"
             android:textAppearance="@style/TextAppearance.Body1.SemiBold"
             android:textColor="@color/gray_400"
             app:layout_constraintStart_toEndOf="@id/iv_popular_store"
@@ -85,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
-            android:text="@{String.valueOf(data.average_star)}"
+            android:text="@{String.valueOf(storeData.averageStar)}"
             android:textAppearance="@style/TextAppearance.Body2.Regular"
             android:textColor="@color/gray_800"
             app:layout_constraintStart_toEndOf="@id/ic_popular_store_star"
@@ -97,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="@{String.valueOf(data.review_count)}"
+            android:text="@{storeData.reviewCount > 300 ? @string/popular_store_review_count_over : @string/popular_store_review_count(storeData.reviewCount) }"
             android:textAppearance="@style/TextAppearance.Body2.Regular"
             android:textColor="@color/gray_800"
             app:layout_constraintStart_toEndOf="@id/tv_popular_store_review"
@@ -110,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="1dp"
-            android:text="@{data.shop_category}"
+            android:text="@{storeData.shopCategory}"
             android:textAppearance="@style/TextAppearance.Body2.Regular"
             android:textColor="@color/gray_200"
             app:layout_constraintStart_toEndOf="@id/iv_popular_store"
@@ -132,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:text="@{data.short_address}"
+            android:text="@{storeData.shortAddress}"
             android:textAppearance="@style/TextAppearance.Body2.Regular"
             android:textColor="@color/gray_200"
             app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_food_type"
@@ -148,14 +145,14 @@
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toEndOf="@id/iv_popular_store"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_store_food_type"
-            app:srcCompat="@drawable/ic_people_grey_24px" />
+            app:srcCompat="@drawable/ic_people_grey_100_24px" />
 
         <TextView
-            android:id="@+id/tv_popular_store_1"
+            android:id="@+id/tv_popular_store_avg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="@string/item_popular_store_avg"
+            android:text="@string/popular_store_avg"
             android:textAppearance="@style/TextAppearance.Caption1.Regular"
             android:textColor="@color/gray_300"
             app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
@@ -167,19 +164,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="@{String.valueOf(data.average_waiting)}"
+            android:text="@{String.valueOf(storeData.averageWaiting)}"
             android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
             android:textColor="@color/gray_600"
             app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
-            app:layout_constraintStart_toEndOf="@id/tv_popular_store_1"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_avg"
             app:layout_constraintTop_toTopOf="@id/ic_popular_store_people"
             tools:text="4753" />
 
         <TextView
-            android:id="@+id/tv_popular_store_2"
+            android:id="@+id/tv_popular_store_wait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/item_popular_store_wait"
+            android:text="@string/popular_store_wait"
             android:textAppearance="@style/TextAppearance.Caption1.Regular"
             android:textColor="@color/gray_300"
             app:layout_constraintBottom_toBottomOf="@id/ic_popular_store_people"
