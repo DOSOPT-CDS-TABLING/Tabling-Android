@@ -34,4 +34,3 @@ data class ResponseWaitingDetailDto(
         val requestContent: String,
     )
 }
-

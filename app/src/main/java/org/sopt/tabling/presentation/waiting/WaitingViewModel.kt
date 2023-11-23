@@ -8,7 +8,7 @@ import org.sopt.tabling.data.model.response.ResponseWaitingDetailDto
 class WaitingViewModel : ViewModel() {
     private val _waitingDetail =
         MutableLiveData<ResponseWaitingDetailDto.WaitingDetailData>()
-    val waitingDetail : LiveData<ResponseWaitingDetailDto.WaitingDetailData> = _waitingDetail
+    val waitingDetail: LiveData<ResponseWaitingDetailDto.WaitingDetailData> = _waitingDetail
 
     init {
         _waitingDetail.value =
