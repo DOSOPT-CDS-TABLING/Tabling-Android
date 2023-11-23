@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="dummyViewModel"
             type="org.sopt.tabling.presentation.dummy.DummyViewModel" />
@@ -13,10 +15,327 @@
         android:layout_height="match_parent"
         tools:context=".presentation.waiting.WaitingDetailActivity">
 
-
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/materialToolbar"
+            android:id="@+id/tb_waiting_detail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/item_waiting_detail_tb"
+            app:navigationIcon="@drawable/ic_back_button_gray_600_45px"
+            app:title="@string/waiting_detail"
+            app:titleTextAppearance="@style/TextAppearance.H2"
+            app:titleTextColor="@color/gray_800" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_ing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/waiting_ing"
+            android:textColor="@color/gray_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_waiting_detail" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:textAppearance="@style/TextAppearance.H1"
+            android:textColor="@color/gray_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_ing"
+            tools:text="파이어가이즈 여의도" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/waiting_number_primary"
+            android:textAppearance="@style/TextAppearance.H2"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_name" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_8dp_bg_gray_700"
+            android:layout_marginTop="9dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_waiting_detail">
+
+            <TextView
+                android:id="@+id/tv_front_waiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/front_waiting"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_front_waiting_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/front_waiting_number"
+                android:textAppearance="@style/TextAppearance.H1"
+                android:textColor="@color/primary"
+                app:layout_constraintEnd_toStartOf="@id/tv_front_waiting_team"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_front_waiting" />
+
+            <TextView
+                android:id="@+id/tv_front_waiting_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/front_waiting_team"
+                android:textAppearance="@style/TextAppearance.H1"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_front_waiting_number"
+                app:layout_constraintTop_toBottomOf="@id/tv_front_waiting" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_waiting_detail_call"
+            style="@style/Style.Material3.Button.Outlined.Custom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/call"
+            app:icon="@drawable/ic_call_gray_500_24px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_number" />
+
+        <Button
+            android:id="@+id/btn_waiting_detail_location"
+            style="@style/Style.Material3.Button.Outlined.Custom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/location"
+            app:icon="@drawable/ic_location_gray_500_24px"
+            app:layout_constraintStart_toEndOf="@id/btn_waiting_detail_call"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_number" />
+
+        <Button
+            android:id="@+id/btn_waiting_detail_store"
+            style="@style/Style.Material3.Button.Outlined.Custom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/store_detail"
+            app:icon="@drawable/ic_store_gray_500_24px"
+            app:layout_constraintStart_toEndOf="@+id/btn_waiting_detail_location"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_number" />
+
+        <View
+            android:id="@+id/view_waiting_horizontal_3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_waiting_detail_call" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="21dp"
+            android:text="@string/waiting_info"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/gray_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_3dp" />
+
+        <View
+            android:id="@+id/view_waiting_horizontal_1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_info" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_date"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_1dp" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_1dp"
+            tools:text="2023-11-13(월) 20:39" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_waiting_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_number"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_date_text" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_waiting_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_date"
+            tools:text="66번" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_person_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_person_count"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_waiting_number_text" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_person_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_waiting_number"
+            tools:text="2명" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_state"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_person_count_text" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_person_count"
+            tools:text="이용예정" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_total_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_total_price"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_state_text" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_state"
+            tools:text="0원" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="29dp"
+            android:text="@string/waiting_request"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_total_price_text" />
+
+        <View
+            android:id="@+id/view_waiting_horizontal_3dp_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_request" />
+
+        <TextView
+            android:id="@+id/tv_waiting_detail_request_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/waiting_request_default"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_3dp_sec" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
