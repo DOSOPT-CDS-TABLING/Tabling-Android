@@ -25,7 +25,7 @@ class ShopDetailMenuListFragment :
         with(binding) {
             shopDetailViewModel?.let { shopDetailViewModel ->
                 shopDetailMenuListAdapter = ShopDetailMenuListAdapter()
-                binding.rvShopDetailMenuList.adapter = shopDetailMenuListAdapter
+                rvShopDetailMenuList.adapter = shopDetailMenuListAdapter
                 shopDetailMenuListAdapter.submitList(shopDetailViewModel.mockShopDetailInfo.menuList)
                 includeShopDetailMenuListDetailBtn.tvDetailBtn.text =
                     getString(R.string.shop_detail_menu_list_full_menu_detail)
