@@ -29,6 +29,7 @@
     <!-- shop detail menu list -->
     <string name="shop_detail_menu_list_full_menu">전체 메뉴</string>
     <string name="shop_detail_menu_list_full_menu_detail">메뉴 전체보기</string>
+    <string name="shop_detail_menu_list_price">%s원</string>
 
     <!-- shop detail recent review -->
     <string name="shop_detail_recent_review_total_star">전체 평점</string>
