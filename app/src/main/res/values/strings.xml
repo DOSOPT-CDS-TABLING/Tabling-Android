@@ -38,5 +38,8 @@
     <string name="shop_detail_recent_review_kindness">친절도</string>
     <string name="shop_detail_recent_review_cleanliness">청결상태</string>
     <string name="shop_detail_recent_review_full_review_detail">리뷰 전체보기</string>
+    <string name="shop_detail_recent_review_title">리뷰 %d건</string>
+    <string name="shop_detail_recent_review_score">%.1f점</string>
+    <string name="shop_detail_recent_review_day_before">%d일 전</string>
 
 </resources>
