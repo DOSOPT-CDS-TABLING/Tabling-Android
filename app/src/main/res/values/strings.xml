@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Tabling-Android</string>
+
+    <!-- popular store -->
+    <string name="area_seoul_south">서울 남부</string>
+    <string name="area_all">전체</string>
+    <string name="area_seoul_gangnam">강남역/역삼</string>
+    <string name="area_seoul_apgujeong">압구정/청담</string>
+    <string name="area_seoul_samsung">선릉/삼성</string>
+    <string name="area_seoul_seocho">서초/방배</string>
+    <string name="popular_store_avg_personnel">일 평균 대기인원</string>
+    <string name="popular_store_standard">을 기준으로 선정한</string>
+    <string name="popular_store_BEST">인기 매장 BEST</string>
+    <string name="popular_store_review_count">(%d)</string>
+    <string name="popular_store_review_count_over">(300+)</string>
+    <string name="popular_store_avg">일 평균</string>
+    <string name="popular_store_wait">명 대기</string>
+    <string name="popular_store_waiting_team">대기 %d팀</string>
+    <string name="popular_store_no_waiting_team">대기없음</string>
 </resources>

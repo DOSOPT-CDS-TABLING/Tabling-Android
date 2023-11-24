@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="storeViewModel"
+            type="org.sopt.tabling.presentation.store.StoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.store.PopularStoreActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_popular_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back_gray_800_24px">
+
+            <TextView
+                android:id="@+id/tv_popular_store_tb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/area_seoul_south"
+                android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                android:textColor="@color/gray_800"
+                tools:layout_editor_absoluteX="56dp"
+                tools:layout_editor_absoluteY="22dp" />
+
+            <ImageButton
+                android:id="@+id/ib_popular_store_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_polygon_gray_800_8px" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_popular_store_chip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_popular_store">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_popular_store_area"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Style.Material3.Chip.Suggestion.Waiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:checked="true"
+                    android:text="@string/area_all" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Style.Material3.Chip.Suggestion.Waiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/area_seoul_gangnam" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Style.Material3.Chip.Suggestion.Waiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/area_seoul_apgujeong" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Style.Material3.Chip.Suggestion.Waiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/area_seoul_samsung" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Style.Material3.Chip.Suggestion.Waiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/area_seoul_seocho" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <ImageButton
+            android:id="@+id/ib_popular_store_arrow_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gradient_white_rect"
+            android:paddingStart="27dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="6dp"
+            android:src="@drawable/ic_arrow_down_black_36px"
+            app:layout_constraintBottom_toBottomOf="@id/hsv_popular_store_chip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/hsv_popular_store_chip" />
+
+        <View
+            android:id="@+id/view_popular_store_horizontal_1dp"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="11dp"
+            android:background="@color/gray_000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hsv_popular_store_chip" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_avg_people_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/popular_store_avg_personnel"
+            android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_popular_store_horizontal_1dp" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popular_store_standard"
+            android:textAppearance="@style/TextAppearance.Caption1.Regular"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_avg_people_number"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_avg_people_number"
+            app:layout_constraintTop_toTopOf="@id/tv_popular_store_avg_people_number" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/area_seoul_south"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_avg_people_number" />
+
+        <TextView
+            android:id="@+id/tv_popular_store_best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/popular_store_BEST"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_area"
+            app:layout_constraintStart_toEndOf="@id/tv_popular_store_area"
+            app:layout_constraintTop_toTopOf="@id/tv_popular_store_area" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular_store"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_store_area"
+            tools:listitem="@layout/item_popular_store" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
