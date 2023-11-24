@@ -10,10 +10,12 @@ import retrofit2.Retrofit
 
 object ApiFactory {
     private val client by lazy {
-        OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
-            level =
-                if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        }).build()
+        OkHttpClient.Builder().addInterceptor(
+            HttpLoggingInterceptor().apply {
+                level =
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            }
+        ).build()
     }
     val retrofit: Retrofit by lazy {
         Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
@@ -21,10 +23,9 @@ object ApiFactory {
             .client(client).build()
     }
 
-
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
 }
 
 object ServicePool {
-
+    //TODO
 }
