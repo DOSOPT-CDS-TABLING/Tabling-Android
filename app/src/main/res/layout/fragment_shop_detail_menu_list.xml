@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="shopDetailViewModel"
+            type="org.sopt.tabling.presentation.shopDetail.ShopDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,8 +39,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_shop_detail_menu_list"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_shop_detail_menu_list_title"
