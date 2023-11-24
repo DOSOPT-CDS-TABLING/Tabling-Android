@@ -40,7 +40,7 @@ jobs:
       - name: Access BASE_URL
         env:
           HFM_BASE_URL: ${{ secrets.BASE_URL }}
-        run: echo "BASE_URL=\"$BASE_URL\"" >> local.properties
+        run: echo "base.url=\"$BASE_URL\"" >> local.properties
 
       - name: Lint Check
         run: ./gradlew ktlintCheck -PcompileSdkVersion=34
