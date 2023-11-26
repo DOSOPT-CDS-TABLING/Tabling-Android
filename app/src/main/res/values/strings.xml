@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tabling-Android</string>
-    Stand by
+
     <!-- waiting detail -->
     <string name="waiting_detail">대기 상세</string>
     <string name="waiting_ing">대기중이에요</string>
@@ -17,10 +17,26 @@
     <string name="waiting_number_data">%d번</string>
     <string name="waiting_person_count">인원</string>
     <string name="waiting_person_data">%d명</string>
-    <string name="waiting_state">대기상태</string>
+    <string name="waiting_state">대기상s태</string>
     <string name="waiting_total_price">총 금액</string>
     <string name="waiting_total_price_data">%d원</string>
     <string name="waiting_request">요청사항</string>
     <string name="waiting_request_default">작성한 내용이 없습니다.</string>
 
+    <!-- popular store -->
+    <string name="area_seoul_south">서울 남부</string>
+    <string name="area_all">전체</string>
+    <string name="area_seoul_gangnam">강남역/역삼</string>
+    <string name="area_seoul_apgujeong">압구정/청담</string>
+    <string name="area_seoul_samsung">선릉/삼성</string>
+    <string name="area_seoul_seocho">서초/방배</string>
+    <string name="popular_store_avg_personnel">일 평균 대기인원</string>
+    <string name="popular_store_standard">을 기준으로 선정한</string>
+    <string name="popular_store_BEST">인기 매장 BEST</string>
+    <string name="popular_store_review_count">(%d)</string>
+    <string name="popular_store_review_count_over">(300+)</string>
+    <string name="popular_store_avg">일 평균</string>
+    <string name="popular_store_wait">명 대기</string>
+    <string name="popular_store_waiting_team">대기 %d팀</string>
+    <string name="popular_store_no_waiting_team">대기없음</string>
 </resources>
