@@ -35,6 +35,24 @@
         <item name="cornerRadius">6dp</item>
     </style>
 
+    <style name="Style.Material3.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:drawablePadding">0dp</item>
+    </style>
+
+    <style name="Style.Material3.Button.Outlined.Custom" parent="Style.Material3.Button.Outlined">
+        <item name="cornerRadius">8dp</item>
+        <item name="iconTint">@null</item>
+        <item name="iconSize">@null</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="strokeColor">@color/gray_100</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">29dp</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:textAppearance">@style/TextAppearance.Caption1.SemiBold</item>
+    </style>
+
     <!-- BottomSheet -->
     <style name="Style.ShapeAppearance.BottomSheetDialog" parent="">
         <item name="cornerFamily">rounded</item>

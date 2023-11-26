@@ -74,7 +74,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_review"
             app:layout_constraintStart_toEndOf="@id/iv_popular_store"
             app:layout_constraintTop_toTopOf="@id/tv_popular_store_review"
-            app:srcCompat="@drawable/ic_star_yellow_14px" />
+            app:srcCompat="@drawable/ic_star_yellow_14" />
 
         <TextView
             android:id="@+id/tv_popular_store_review"
@@ -145,7 +145,7 @@
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toEndOf="@id/iv_popular_store"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_store_food_type"
-            app:srcCompat="@drawable/ic_people_grey_100_24px" />
+            app:srcCompat="@drawable/ic_people_grey_100_24" />
 
         <TextView
             android:id="@+id/tv_popular_store_avg"

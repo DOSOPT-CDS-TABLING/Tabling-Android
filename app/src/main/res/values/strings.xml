@@ -1,6 +1,28 @@
 <resources>
     <string name="app_name">Tabling-Android</string>
 
+    <!-- waiting detail -->
+    <string name="waiting_detail">대기 상세</string>
+    <string name="waiting_ing">대기중이에요</string>
+    <string name="waiting_number_primary">대기번호 #%d</string>
+    <string name="front_waiting">내 앞 대기</string>
+    <string name="front_waiting_number">%d</string>
+    <string name="front_waiting_team">팀</string>
+    <string name="call">전화</string>
+    <string name="location">위치</string>
+    <string name="store_detail">매장상세</string>
+    <string name="waiting_info">대기정보</string>
+    <string name="waiting_date">접수일시</string>
+    <string name="waiting_number">대기번호</string>
+    <string name="waiting_number_data">%d번</string>
+    <string name="waiting_person_count">인원</string>
+    <string name="waiting_person_data">%d명</string>
+    <string name="waiting_state">대기상s태</string>
+    <string name="waiting_total_price">총 금액</string>
+    <string name="waiting_total_price_data">%d원</string>
+    <string name="waiting_request">요청사항</string>
+    <string name="waiting_request_default">작성한 내용이 없습니다.</string>
+
     <!-- popular store -->
     <string name="area_seoul_south">서울 남부</string>
     <string name="area_all">전체</string>
