@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.queue.QueueDetailsActivity"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/arrow_back_45px"
+            app:title="@string/queue_title"
+            app:titleTextAppearance="@style/TextAppearance.H2"
+            app:titleTextColor="@color/gray_800" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:id="@+id/tab_layout"
+            android:layout_height="38dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+            app:tabIndicatorColor="@color/gray_600"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/gray_600"
+            app:tabTextColor="@color/gray_100">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_reservation_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/queue_tab1"
+                app:tabTextAppearance="@style/TextAppearance.Body1.SemiBold" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_reservation_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/queue_tab2"
+                app:tabTextAppearance="@style/TextAppearance.Body1.SemiBold" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <View
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F3F3"
+            app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+            android:layout_marginTop="37dp" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/fcv_reservation"
+            app:layout_constraintTop_toBottomOf="@id/bottom_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -93,4 +93,8 @@
         <item name="android:checkable">false</item>
     </style>
 
+    <style name="Widget.Material3.Chip.Style.Radius95" parent="Widget.Material3.Chip.Style">
+        <item name="chipCornerRadius">15dp</item>
+    </style>
+
 </resources>

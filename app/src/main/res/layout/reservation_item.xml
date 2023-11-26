@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/block"
+    android:layout_width="wrap_content"
+    android:clipToPadding="false"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:paddingHorizontal="@dimen/spacing4"
+    android:paddingVertical="@dimen/spacing4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_queue_item"
+        android:elevation="@dimen/spacing4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_reservation_wait"
+            style="@style/Widget.Material3.Chip.Style.Radius95"
+            android:layout_width="58dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/queue_chip_wait"
+            android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/primary"
+            app:chipStrokeColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_show_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="23dp"
+            android:padding="@dimen/spacing4"
+            android:text="@string/queue_btn_detail"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_reservation_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="51dp"
+            android:text="@string/queue_tv_date"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_reservation_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="51dp"
+            android:text="@string/queue_tv_bar"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/tv_reservation_date"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_reservation_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="51dp"
+            android:text="@string/queue_tv_people"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/tv_reservation_bar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="7.5dp"
+            android:text="@string/queue_tv_store_name"
+            android:textAppearance="@style/TextAppearance.H0"
+            android:textColor="@color/gray_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_reservation_date" />
+
+        <ImageView
+            android:id="@+id/iv_store_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="75dp"
+            android:src="@drawable/arrow_front_31"
+            app:layout_constraintStart_toEndOf="@id/tv_store_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_waiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="108dp"
+            android:text="@string/queue_tv_waiting"
+            android:textAppearance="@style/TextAppearance.H0"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_waiting_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            android:text="@string/queue_tv_waiting_num"
+            android:textAppearance="@style/TextAppearance.H0"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toEndOf="@id/tv_waiting"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_waiting_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/queue_tv_waiting_info"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting" />
+
+        <TextView
+            android:id="@+id/tv_waiting_info_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/queue_tv_waiting_info_num"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toEndOf="@id/tv_waiting_info"
+            app:layout_constraintTop_toBottomOf="@id/tv_waiting_num" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delay"
+            android:layout_width="282dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="191dp"
+            android:layout_marginEnd="23dp"
+            android:background="@drawable/background_btn"
+            android:text="@string/queue_btn_delay"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/gray_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_code"
+            android:layout_width="282dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="23dp"
+            android:background="@drawable/background_btn"
+            android:text="@string/queue_btn_code"
+            android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+
+            android:textColor="@color/gray_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_delay" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="16dp"
+            android:padding="10dp"
+            android:text="@string/queue_tv_cancel"
+            android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+            android:textColor="@color/gray_100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_code" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
