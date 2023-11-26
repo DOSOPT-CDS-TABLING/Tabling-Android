@@ -11,6 +11,6 @@ RecyclerView.ViewHolder(binding.root){
         binding.tvReservationPeople.text = item.reserveNum + "명"
         binding.tvStoreName.text = item.reserveName
         binding.tvWaitingNum.text = item.waitingNum
-        binding.tvWaitingInfoNum.text = item.realWaitNum
+        binding.tvWaitingInfoNum.text = item.realWaitNum + "팀"
     }
 }
