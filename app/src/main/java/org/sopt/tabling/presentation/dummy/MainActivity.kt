@@ -1,8 +1,7 @@
 package org.sopt.tabling.presentation.dummy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.sopt.tabling.R
+import androidx.appcompat.app.AppCompatActivity
 import org.sopt.tabling.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,9 +11,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnGogogo.setOnClickListener{
+        binding.btnGogogo.setOnClickListener {
             WaitingDialog().show(
-                supportFragmentManager, "WaitingDialog"
+                supportFragmentManager,
+                "WaitingDialog",
             )
         }
     }

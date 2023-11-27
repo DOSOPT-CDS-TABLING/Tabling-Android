@@ -20,7 +20,7 @@ class WaitingDialog : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = DialogWaitingBinding.inflate(inflater, container, false)
         return binding.root
