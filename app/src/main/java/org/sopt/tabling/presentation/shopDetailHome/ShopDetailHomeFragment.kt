@@ -52,7 +52,8 @@ class ShopDetailHomeFragment :
                                     R.color.white
                                 )
                             )
-                        })
+                        }
+                    )
                 }
 
                 tvShopDetailHomeIntroduceContent.text =
