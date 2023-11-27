@@ -74,7 +74,8 @@ class ShopDetailActivity :
                         R.drawable.ic_back_white_45
                     )?.mutate()?.apply {
                         colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    })
+                    }
+                )
 
                 ivShopDetailHeart.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -82,7 +83,8 @@ class ShopDetailActivity :
                         R.drawable.ic_heart_white_24
                     )?.mutate()?.apply {
                         colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    })
+                    }
+                )
 
                 ivShopDetailShare.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -90,7 +92,8 @@ class ShopDetailActivity :
                         R.drawable.ic_share_white_24
                     )?.mutate()?.apply {
                         colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    })
+                    }
+                )
             }
         }
     }
@@ -102,12 +105,13 @@ class ShopDetailActivity :
         setTvShopDetailShopImgPageText(FIST_POSITION)
 
         binding.vpShopDetailShopImg.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                setTvShopDetailShopImgPageText(position)
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    setTvShopDetailShopImgPageText(position)
+                }
             }
-        })
+        )
     }
 
     private fun initTabLayout() {
