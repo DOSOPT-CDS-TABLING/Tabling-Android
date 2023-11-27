@@ -13,7 +13,7 @@ class WaitingDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isCancelable = false // 화면 밖, 뒤로가기 누를 시 다이얼로그 dismiss
+        isCancelable = true
     }
 
     private lateinit var binding: DialogWaitingBinding
@@ -44,6 +44,10 @@ class WaitingDialog : DialogFragment() {
 
         var orderStatus = "확정 예정"
         binding.tvDialogStoreStatusOutput.text = orderStatus
+
+        binding.ivIcExit24.setOnClickListener {
+            dismiss()
+        }
 
         // 버튼 클릭 시 이동
         binding.btnDialogConfirm.setOnClickListener {
