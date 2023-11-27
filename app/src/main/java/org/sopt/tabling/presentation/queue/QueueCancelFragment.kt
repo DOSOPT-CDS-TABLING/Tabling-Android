@@ -1,13 +1,11 @@
 package org.sopt.tabling.presentation.queue
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.sopt.tabling.R
+import androidx.fragment.app.Fragment
 import org.sopt.tabling.databinding.FragmentQueueCancelBinding
-
 
 class QueueCancelFragment : Fragment() {
     private var _binding: FragmentQueueCancelBinding? = null
@@ -17,8 +15,9 @@ class QueueCancelFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentQueueCancelBinding.inflate(inflater, container, false)
         return binding.root

@@ -4,10 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.sopt.tabling.databinding.ReservationItemBinding
-import org.sopt.tabling.databinding.ReservationItemDoneBinding
+import org.sopt.tabling.databinding.ItemDoneReservationBinding
+import org.sopt.tabling.databinding.ItemReservationBinding
 import org.sopt.tabling.domain.model.ReservationItem
-import java.lang.RuntimeException
 
 class ReservationAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
@@ -16,11 +15,11 @@ class ReservationAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.V
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             1 -> ReservationViewHolder(
-                ReservationItemBinding.inflate(inflater, parent, false)
+                ItemReservationBinding.inflate(inflater, parent, false),
             )
 
             2 -> ReservationDoneViewHolder(
-                ReservationItemDoneBinding.inflate(inflater, parent, false)
+                ItemDoneReservationBinding.inflate(inflater, parent, false),
             )
 
             else -> throw RuntimeException()
@@ -33,7 +32,6 @@ class ReservationAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.V
             is ReservationDoneViewHolder -> holder.onBind(reservationList[position] as ReservationItem.ReservationDoneView)
         }
     }
-
 
     override fun getItemViewType(position: Int): Int {
         return when (reservationList[position]) {

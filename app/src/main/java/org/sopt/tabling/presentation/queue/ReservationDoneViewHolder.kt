@@ -1,10 +1,10 @@
 package org.sopt.tabling.presentation.queue
 
 import androidx.recyclerview.widget.RecyclerView
-import org.sopt.tabling.databinding.ReservationItemDoneBinding
+import org.sopt.tabling.databinding.ItemDoneReservationBinding
 import org.sopt.tabling.domain.model.ReservationItem
 
-class ReservationDoneViewHolder(private val binding: ReservationItemDoneBinding) :
+class ReservationDoneViewHolder(private val binding: ItemDoneReservationBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun onBind(item: ReservationItem.ReservationDoneView) {
         binding.tvReservationDate.text = item.reserveDate

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.queue.QueueReservationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_reservation_items"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/rv_reservation_items"
         android:layout_gravity="center"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/reservation_item"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_reservation" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,12 +12,13 @@ import org.sopt.tabling.presentation.common.ReservationViewModel
 class QueueReservationFragment : Fragment() {
     private var _binding: FragmentQueueReservationBinding? = null
     private val binding: FragmentQueueReservationBinding
-        get() = requireNotNull(_binding){ "바인딩 객체가 생성되지 않았습니다." }
+        get() = requireNotNull(_binding) { "바인딩 객체가 생성되지 않았습니다." }
     private val viewModel by viewModels<ReservationViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentQueueReservationBinding.inflate(inflater, container, false)
         return binding.root
