@@ -1,7 +1,12 @@
 package org.sopt.tabling.presentation.shopDetail
 
+import android.animation.ArgbEvaluator
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.tabling.R
@@ -43,6 +48,49 @@ class ShopDetailActivity :
                     R.string.shop_detail_review_count,
                     shopDetailViewModel.mockShopDetailInfo.reviewCount
                 )
+            }
+
+            ablShopDetail.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+                val maxScroll = appBarLayout.totalScrollRange
+                val percentage = Math.abs(verticalOffset).toFloat() / maxScroll.toFloat()
+
+                tbShopDetail.setBackgroundColor(
+                    ArgbEvaluator().evaluate(
+                        percentage,
+                        Color.TRANSPARENT,
+                        Color.WHITE
+                    ) as Int
+                )
+
+                val iconEvaluator = ArgbEvaluator().evaluate(
+                    percentage,
+                    ContextCompat.getColor(this@ShopDetailActivity, R.color.white),
+                    ContextCompat.getColor(this@ShopDetailActivity, R.color.gray_800)
+                ) as Int
+
+                ivShopDetailBack.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@ShopDetailActivity,
+                        R.drawable.ic_back_white_45
+                    )?.mutate()?.apply {
+                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
+                    })
+
+                ivShopDetailHeart.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@ShopDetailActivity,
+                        R.drawable.ic_heart_white_24
+                    )?.mutate()?.apply {
+                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
+                    })
+
+                ivShopDetailShare.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@ShopDetailActivity,
+                        R.drawable.ic_share_white_24
+                    )?.mutate()?.apply {
+                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
+                    })
             }
         }
     }
