@@ -40,7 +40,7 @@ class WaitingDialog : DialogFragment() {
         binding.tvDialogStoreOutput.text = shopName
 
         var personCount = "99"
-        binding.tvDialogStoreNumberOutputText.text = personCount
+        binding.tvDialogStoreNumberOutput.text = personCount
 
         var orderStatus = "확정 예정"
         binding.tvDialogStoreStatusOutput.text = orderStatus
@@ -48,7 +48,7 @@ class WaitingDialog : DialogFragment() {
         // 버튼 클릭 시 이동
         binding.btnDialogConfirm.setOnClickListener {
             // 이용완료/예정 뷰로 이동
-            val intent = Intent(activity, QueueDetailsActivity::class.java)
+            val intent = Intent(activity, PopularStoreActivity::class.java)
             startActivity(intent)
         }
     }
