@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_back_gray_800_24px">
+            app:navigationIcon="@drawable/ic_back_gray_800_24">
 
             <TextView
                 android:id="@+id/tv_popular_store_tb"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:background="@color/white"
-                android:src="@drawable/ic_polygon_gray_800_8px" />
+                android:src="@drawable/ic_polygon_gray_800_8" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -107,7 +107,7 @@
             android:paddingTop="6dp"
             android:paddingEnd="16dp"
             android:paddingBottom="6dp"
-            android:src="@drawable/ic_arrow_down_black_36px"
+            android:src="@drawable/ic_arrow_down_black_36"
             app:layout_constraintBottom_toBottomOf="@id/hsv_popular_store_chip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/hsv_popular_store_chip" />

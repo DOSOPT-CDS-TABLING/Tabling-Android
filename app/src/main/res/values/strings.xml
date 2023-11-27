@@ -1,6 +1,51 @@
 <resources>
     <string name="app_name">Tabling-Android</string>
 
+    <!-- waiting detail -->
+    <string name="waiting_detail">대기 상세</string>
+    <string name="waiting_ing">대기중이에요</string>
+    <string name="waiting_number_primary">대기번호 #%d</string>
+    <string name="front_waiting">내 앞 대기</string>
+    <string name="front_waiting_number">%d</string>
+    <string name="front_waiting_team">팀</string>
+    <string name="call">전화</string>
+    <string name="location">위치</string>
+    <string name="store_detail">매장상세</string>
+    <string name="waiting_info">대기정보</string>
+    <string name="waiting_date">접수일시</string>
+    <string name="waiting_number">대기번호</string>
+    <string name="waiting_number_data">%d번</string>
+    <string name="waiting_person_count">인원</string>
+    <string name="waiting_person_data">%d명</string>
+    <string name="waiting_state">대기상s태</string>
+    <string name="waiting_total_price">총 금액</string>
+    <string name="waiting_total_price_data">%d원</string>
+    <string name="waiting_request">요청사항</string>
+    <string name="waiting_request_default">작성한 내용이 없습니다.</string>
+
+    <string name="queue_title">원격 줄서기 내역</string>
+    <string name="queue_tab1">이용예정/완료</string>
+    <string name="queue_tab2">취소/노쇼</string>
+
+    <string name="queue_chip_wait">이용예정</string>
+    <string name="queue_chip_done">이용완료</string>
+    <string name="queue_btn_detail">상세보기</string>
+    <string name="queue_tv_date">11월 13일 (월)</string>
+    <string name="queue_tv_bar">|</string>
+    <string name="queue_tv_people">2명</string>
+    <string name="queue_tv_store_name">파이브가이즈 여의도</string>
+    <string name="queue_tv_waiting">대기번호 #</string>
+    <string name="queue_tv_waiting_num">66</string>
+    <string name="queue_tv_waiting_info">현재 내 앞 대기</string>
+    <string name="queue_tv_waiting_info_num">4팀</string>
+    <string name="queue_btn_delay">내 순서 미루기</string>
+    <string name="queue_btn_code">확정 코드 입력하기</string>
+    <string name="queue_btn_review">리뷰쓰기</string>
+    <string name="queue_tv_cancel">주문 취소</string>
+    <string name="queue_tv_remain_review">"리뷰 작성 기간이 "</string>
+    <string name="queue_tv_remain_review_num">2일</string>
+    <string name="queue_tv_remain_review2">" 남았어요!"</string>
+
     <!-- popular store -->
     <string name="area_seoul_south">서울 남부</string>
     <string name="area_all">전체</string>
