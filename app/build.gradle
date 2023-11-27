@@ -7,6 +7,9 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'org.sopt.tabling'
     compileSdk 34
@@ -19,6 +22,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", properties["base.url"]
     }
 
     buildTypes {
@@ -37,6 +41,7 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig true
     }
 }
 
@@ -70,6 +75,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0'
+
+    // ViewPager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 }
 
 ktlint {

@@ -25,5 +25,5 @@
 
     <!--gradient-->
     <color name="transparent_black">#80000000</color>
-
+    <color name="transparent_white">#00FFFFFF</color>
 </resources>
