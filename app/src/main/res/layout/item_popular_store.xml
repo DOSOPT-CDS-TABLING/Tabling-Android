@@ -16,21 +16,25 @@
 
         <TextView
             android:id="@+id/tv_popular_store_number"
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
             android:text="@{String.valueOf(storeData.shopId)}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_popular_store"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/iv_popular_store"
-            tools:text="1" />
+            tools:text="10" />
 
         <ImageView
             android:id="@+id/iv_popular_store"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_gray_200_6"
             android:scaleType="centerCrop"
             app:image="@{storeData.profilePhotoUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
