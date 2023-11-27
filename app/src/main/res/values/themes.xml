@@ -111,4 +111,19 @@
         <item name="android:checkable">false</item>
     </style>
 
+    <style name="Widget.Material3.Chip.Style.Radius95" parent="Widget.Material3.Chip.Style">
+        <item name="chipCornerRadius">15dp</item>
+    </style>
+
+    <style name="Widget.Material3.Chip.Style.Radius48" parent="Widget.Material3.Chip.Style">
+        <item name="textStartPadding">8dp</item>
+        <item name="textEndPadding">8dp</item>
+        <item name="chipMinHeight">0dp</item>
+        <item name="android:paddingVertical">2dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Caption1.SemiBold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="chipCornerRadius">48dp</item>
+    </style>
+
 </resources>
