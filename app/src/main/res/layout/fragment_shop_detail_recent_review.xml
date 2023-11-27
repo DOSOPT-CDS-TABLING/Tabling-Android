@@ -160,8 +160,6 @@
             layout="@layout/view_detail_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@id/view_shop_detail_recent_review_bottom_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_shop_detail_recent_review" />
@@ -170,9 +168,11 @@
             android:id="@+id/view_shop_detail_recent_review_bottom_divider"
             android:layout_width="0dp"
             android:layout_height="@dimen/spacing26"
+            android:layout_marginTop="30dp"
             android:background="@color/gray_000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include_shop_detail_recent_review_detail_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
