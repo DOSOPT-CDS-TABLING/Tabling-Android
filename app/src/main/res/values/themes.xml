@@ -21,6 +21,7 @@
         <item name="android:layout_height">@dimen/button_height_56</item>
         <item name="android:layout_width">0dp</item>
         <item name="cornerRadius">8dp</item>
+        <item name="height">@dimen/button_height_56</item>
     </style>
 
     <style name="Widget.OutlinedButton.Basic" parent="Widget.Material3.Button.Basic">
