@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.ContextThemeWrapper
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
@@ -40,6 +41,7 @@ class ShopDetailActivity :
         initShopDetailMenuList()
         initShopDetailRecentReview()
         initTabLayout()
+        initNestedScrollView()
     }
 
     private fun initShopImgViewPager() {
@@ -259,6 +261,31 @@ class ShopDetailActivity :
             override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
 
             override fun onTabReselected(tab: TabLayout.Tab?) = Unit
+        }
+        )
+    }
+
+    private fun initNestedScrollView() {
+        binding.nsvShopDetailContent.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            when (scrollY) {
+                in binding.layoutShopDetailHome.top until binding.layoutShopDetailMenuList.top -> binding.tlShopDetail.setScrollPosition(
+                    HOME,
+                    FIRST_POSITION.toFloat(),
+                    true
+                )
+
+                in binding.layoutShopDetailMenuList.top until binding.layoutShopDetailRecentReview.top -> binding.tlShopDetail.setScrollPosition(
+                    MENU_LIST,
+                    FIRST_POSITION.toFloat(),
+                    true
+                )
+
+                in binding.layoutShopDetailRecentReview.top until binding.layoutShopDetailRecentReview.bottom -> binding.tlShopDetail.setScrollPosition(
+                    RECENT_REVIEW,
+                    FIRST_POSITION.toFloat(),
+                    true
+                )
+            }
         }
         )
     }
