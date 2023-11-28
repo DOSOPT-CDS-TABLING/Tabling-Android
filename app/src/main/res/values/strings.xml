@@ -64,10 +64,10 @@
     <string name="popular_store_no_waiting_team">대기없음</string>
 
     <!-- visit completed -->
-    <string name="visit_completed_visit_person_count">방문인원</string>
-    <string name="visit_completed_person_count_choose">을 선택하세요</string>
-    <string name="visit_completed_person_count">인원</string>
-    <string name="visit_completed_apply">대기 신청하기</string>
+    <string name="visit_person_visit_person_count">방문인원</string>
+    <string name="visit_person_person_count_choose">을 선택하세요</string>
+    <string name="visit_person_person_count">인원</string>
+    <string name="visit_person_apply">대기 신청하기</string>
 
 
     <!-- shop detail -->
