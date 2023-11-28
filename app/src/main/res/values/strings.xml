@@ -62,4 +62,20 @@
     <string name="popular_store_wait">명 대기</string>
     <string name="popular_store_waiting_team">대기 %d팀</string>
     <string name="popular_store_no_waiting_team">대기없음</string>
+    <string name="tv_dialog_complete">대기 신청</string>
+    <string name="tv_dialog_complete2">완료</string>
+    <string name="tv_waiting_number_text">대기번호</string>
+    <string name="tv_waiting_number">66</string>
+    <string name="tv_waiting_number_bun">번</string>
+    <string name="tv_dialog_now_waiting">현재 내 앞 대기</string>
+    <string name="tv_dialog_store_name">매장명</string>
+    <string name="tv_dialog_now_waiting_number">4</string>
+    <string name="tv_dialog_now_waiting2">팀</string>
+    <string name="btn_dialog_confirm">대기 내역 확인하기</string>
+    <string name="tv_dialog_store_output">파이브가이즈 여의도</string>
+    <string name="tv_dialog_store_number">인원</string>
+    <string name="tv_dialog_store_number_output">2</string>
+    <string name="tv_dialog_store_number_output_text">명</string>
+    <string name="tv_dialog_store_status">신청상태</string>
+    <string name="tv_dialog_store_status_output">확정 예정</string>
 </resources>
