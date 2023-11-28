@@ -63,6 +63,13 @@
     <string name="popular_store_waiting_team">대기 %d팀</string>
     <string name="popular_store_no_waiting_team">대기없음</string>
 
+    <!-- visit completed -->
+    <string name="visit_person_visit_person_count">방문인원</string>
+    <string name="visit_person_person_count_choose">을 선택하세요</string>
+    <string name="visit_person_person_count">인원</string>
+    <string name="visit_person_apply">대기 신청하기</string>
+
+
     <!-- shop detail -->
     <string name="shop_detail_map">지도보기</string>
     <string name="shop_detail_tab_layout_home">홈</string>

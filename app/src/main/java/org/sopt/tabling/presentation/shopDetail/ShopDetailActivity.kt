@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayout
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
 import org.sopt.tabling.presentation.common.ViewModelFactory
+import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
 import org.sopt.tabling.util.binding.BindingActivity
 import org.sopt.tabling.util.extension.setRatingBar
 
@@ -32,6 +33,7 @@ class ShopDetailActivity :
         binding.shopDetailViewModel = shopDetailViewModel
 
         initLayout()
+        addListeners()
     }
 
     private fun initLayout() {
@@ -291,6 +293,12 @@ class ShopDetailActivity :
         )
     }
 
+    private fun addListeners() {
+        binding.btnShopDetailReserve.setOnClickListener {
+            VisitPersonBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
+        }
+    }
+
     private fun setTvShopDetailShopImgPageText(currentPage: Int) {
         binding.tvShopDetailShopImgPage.text = getString(
             R.string.shop_detail_shop_img_page,
@@ -309,5 +317,6 @@ class ShopDetailActivity :
         const val HOME = 0
         const val MENU_LIST = 1
         const val RECENT_REVIEW = 2
+        const val VISIT_PERSON = "visitPersonBottomSheetDialogFragment"
     }
 }
