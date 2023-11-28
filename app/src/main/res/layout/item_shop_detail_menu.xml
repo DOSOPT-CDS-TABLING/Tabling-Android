@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_item_shop_detail_menu_img"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="@dimen/spacing16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/Radius6" />
+
+    <TextView
+        android:id="@+id/tv_item_shop_detail_menu_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textAppearance="@style/TextAppearance.Body2.Regular"
+        android:textColor="@color/gray_800"
+        app:layout_constraintEnd_toEndOf="@id/iv_item_shop_detail_menu_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_item_shop_detail_menu_img"
+        tools:text="햄버거" />
+
+    <TextView
+        android:id="@+id/tv_item_shop_detail_menu_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+        android:textColor="@color/primary"
+        app:layout_constraintEnd_toEndOf="@id/iv_item_shop_detail_menu_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_shop_detail_menu_name"
+        tools:text="13,400원" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
