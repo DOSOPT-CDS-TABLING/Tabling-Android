@@ -1,6 +1,5 @@
 package org.sopt.tabling.presentation.waiting
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,14 +16,14 @@ class WaitingViewModel : ViewModel() {
 
     fun getWaitingDetail(orderId: Int) {
         viewModelScope.launch {
-            val response = kotlin.runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }
+            val response =
+                kotlin.runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }
 
             response.onSuccess { data ->
                 _waitingDetail.value = data.waitingDetailData
             }.onFailure {
                 Timber.d("서버 통신의 에러발생")
             }
-
         }
     }
 }

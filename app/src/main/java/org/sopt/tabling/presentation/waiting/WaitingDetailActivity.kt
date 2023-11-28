@@ -13,7 +13,6 @@ class WaitingDetailActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // View 연결 전 임의로 설정한 orderId
         val orderId = 2
         waitingViewModel.getWaitingDetail(orderId)
@@ -25,5 +24,4 @@ class WaitingDetailActivity :
             binding.waitingData = waitingDetailList
         }
     }
-
 }
