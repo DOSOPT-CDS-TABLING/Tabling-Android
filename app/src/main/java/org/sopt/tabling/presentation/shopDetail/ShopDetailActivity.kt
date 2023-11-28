@@ -39,6 +39,7 @@ class ShopDetailActivity :
         initShopDetailHome()
         initShopDetailMenuList()
         initShopDetailRecentReview()
+        initTabLayout()
     }
 
     private fun initShopImgViewPager() {
@@ -232,6 +233,34 @@ class ShopDetailActivity :
                     getString(R.string.shop_detail_recent_review_full_review_detail)
             }
         }
+    }
+
+    private fun initTabLayout() {
+        binding.tlShopDetail.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    HOME -> binding.nsvShopDetailContent.scrollTo(
+                        Y_VALUE,
+                        binding.layoutShopDetailHome.top
+                    )
+
+                    MENU_LIST -> binding.nsvShopDetailContent.scrollTo(
+                        Y_VALUE,
+                        binding.layoutShopDetailMenuList.top
+                    )
+
+                    RECENT_REVIEW -> binding.nsvShopDetailContent.scrollTo(
+                        Y_VALUE,
+                        binding.layoutShopDetailRecentReview.top
+                    )
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
+
+            override fun onTabReselected(tab: TabLayout.Tab?) = Unit
+        }
+        )
     }
 
     private fun setTvShopDetailShopImgPageText(currentPage: Int) {
