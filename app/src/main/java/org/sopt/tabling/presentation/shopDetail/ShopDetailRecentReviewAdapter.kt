@@ -1,4 +1,4 @@
-package org.sopt.tabling.presentation.shopDetailRecentReview
+package org.sopt.tabling.presentation.shopDetail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

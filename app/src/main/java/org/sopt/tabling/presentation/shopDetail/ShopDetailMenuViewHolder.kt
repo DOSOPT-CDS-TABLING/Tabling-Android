@@ -1,4 +1,4 @@
-package org.sopt.tabling.presentation.shopDetailMenuList
+package org.sopt.tabling.presentation.shopDetail
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView

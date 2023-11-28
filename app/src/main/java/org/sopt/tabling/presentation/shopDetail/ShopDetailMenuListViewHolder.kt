@@ -1,8 +1,9 @@
-package org.sopt.tabling.presentation.shopDetailMenuList
+package org.sopt.tabling.presentation.shopDetail
 
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.tabling.databinding.ItemShopDetailMenuListBinding
 import org.sopt.tabling.domain.model.Menu
+import org.sopt.tabling.presentation.shopDetail.ShopDetailMenuAdapter
 
 class ShopDetailMenuListViewHolder(
     private val binding: ItemShopDetailMenuListBinding
