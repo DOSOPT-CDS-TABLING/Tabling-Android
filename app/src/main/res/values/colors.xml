@@ -2,7 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="transparent_white">#00FFFFFF</color>
 
     <!--primary-->
     <color name="primary">#F85A40</color>
@@ -23,4 +22,8 @@
     <color name="gray_600">#202026</color>
     <color name="gray_700">#17171B</color>
     <color name="gray_800">#101012</color>
+
+    <!--gradient-->
+    <color name="transparent_black">#80000000</color>
+    <color name="transparent_white">#00FFFFFF</color>
 </resources>
