@@ -15,12 +15,12 @@
         android:theme="@style/Theme.TablingAndroid"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
             android:name=".presentation.store.PopularStoreActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
+
         <activity
             android:name=".presentation.queue.QueueDetailsActivity"
             android:exported="true"
@@ -38,10 +38,6 @@
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
-        <activity
-            android:name=".presentation.dummy.DummyActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
