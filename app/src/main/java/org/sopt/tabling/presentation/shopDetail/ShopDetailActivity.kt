@@ -3,8 +3,6 @@ package org.sopt.tabling.presentation.shopDetail
 import android.animation.ArgbEvaluator
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.view.ContextThemeWrapper
 import androidx.activity.viewModels
@@ -24,6 +22,7 @@ import org.sopt.tabling.presentation.common.ViewModelFactory
 import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
 import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingActivity
+import org.sopt.tabling.util.extension.setImageDrawableWithColorFilter
 import org.sopt.tabling.util.extension.setRatingBar
 
 class ShopDetailActivity :
@@ -104,31 +103,22 @@ class ShopDetailActivity :
                     ContextCompat.getColor(this@ShopDetailActivity, R.color.gray_800)
                 ) as Int
 
-                ivShopDetailBack.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_back_white_45
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailBack.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_back_white_45,
+                    iconEvaluator
                 )
 
-                ivShopDetailHeart.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_heart_white_24
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailHeart.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_heart_white_24,
+                    iconEvaluator
                 )
 
-                ivShopDetailShare.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_share_white_24
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailShare.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_share_white_24,
+                    iconEvaluator
                 )
             }
         }
