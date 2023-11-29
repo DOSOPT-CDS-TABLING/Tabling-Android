@@ -112,7 +112,7 @@
                 android:paddingVertical="7dp"
                 android:paddingStart="2dp"
                 android:paddingEnd="7dp"
-                android:src="@drawable/ic_black_plus_24"
+                android:src="@drawable/ic_plus_black_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_reserve_person_count"
