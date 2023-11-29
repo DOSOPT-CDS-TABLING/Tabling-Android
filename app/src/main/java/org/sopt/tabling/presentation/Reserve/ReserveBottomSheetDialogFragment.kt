@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.tabling.R
@@ -43,8 +44,10 @@ class ReserveBottomSheetDialogFragment(
                 }
 
                 ivReservePlus.setOnClickListener {
-                    reserveViewModel.personCount.value =
-                        (reserveViewModel.getPersonCountAsInt() + 1).toString()
+                    if (reserveViewModel.getPersonCountAsInt() < 99) {
+                        reserveViewModel.personCount.value =
+                            (reserveViewModel.getPersonCountAsInt() + 1).toString()
+                    }
                 }
             }
         }
@@ -63,11 +66,17 @@ class ReserveBottomSheetDialogFragment(
     private fun collectData() {
         reserveViewModel.personCount.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
-                binding.ivReserveMinus.setImageResource(
-                    if (reserveViewModel.personCount.value == PERSON_INIT_VALUE.toString()) {
-                        R.drawable.ic_minus_gray_100_24
-                    } else {
-                        R.drawable.ic_minus_black_24
+                binding.ivReserveMinus.load(
+                    when (reserveViewModel.personCount.value) {
+                        PERSON_INIT_VALUE.toString() -> R.drawable.ic_minus_gray_100_24
+                        else -> R.drawable.ic_minus_black_24
+                    }
+                )
+
+                binding.ivReservePlus.load(
+                    when (reserveViewModel.personCount.value) {
+                        PERSON_LAST_VALUE.toString() -> R.drawable.ic_plus_gray_100_24
+                        else -> R.drawable.ic_plus_black_24
                     }
                 )
             }.launchIn(lifecycleScope)
@@ -89,5 +98,6 @@ class ReserveBottomSheetDialogFragment(
 
     companion object {
         const val PERSON_INIT_VALUE = 0
+        const val PERSON_LAST_VALUE = 99
     }
 }
