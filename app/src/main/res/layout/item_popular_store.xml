@@ -35,6 +35,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_gray_200_6"
             android:clipToOutline="true"
             android:foreground="@drawable/shape_gray_200_6"
             android:scaleType="centerCrop"
