@@ -17,8 +17,7 @@ class WaitingViewModel : ViewModel() {
     fun getWaitingDetail(orderId: Int) {
         viewModelScope.launch {
             val response =
-                kotlin.runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }
-
+                runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }
             response.onSuccess { data ->
                 _waitingDetail.value = data.waitingDetailData
             }.onFailure {
