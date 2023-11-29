@@ -7,7 +7,10 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import org.sopt.tabling.R
+import org.sopt.tabling.databinding.ViewProgressBarBinding
 import org.sopt.tabling.databinding.ViewRatingBarBinding
+import org.sopt.tabling.presentation.type.StarType
 
 fun View.showSnackbar(message: String, isShort: Boolean = true) {
     val duration = if (isShort) Snackbar.LENGTH_SHORT else Snackbar.LENGTH_LONG
@@ -35,4 +38,11 @@ fun ImageView.setImageDrawableWithColorFilter(
             colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
         }
     )
+}
+
+fun ViewProgressBarBinding.setData(context: Context, starType: StarType, starValue: Float) {
+    val convertDetailStarValue: (Float) -> Int = { value -> (value * 20).toInt() }
+    tvProgressBarTitle.text = context.getString(starType.startTypeNameRes)
+    pbProgressBar.progress = convertDetailStarValue(starValue)
+    tvProgressBarScore.text = context.getString(R.string.shop_detail_recent_review_score, starValue)
 }

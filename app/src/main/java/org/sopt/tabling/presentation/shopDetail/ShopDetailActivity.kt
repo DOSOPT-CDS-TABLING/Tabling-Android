@@ -19,9 +19,11 @@ import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
 import org.sopt.tabling.domain.model.ShopDetail
 import org.sopt.tabling.presentation.common.ViewModelFactory
+import org.sopt.tabling.presentation.type.StarType
 import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
 import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingActivity
+import org.sopt.tabling.util.extension.setData
 import org.sopt.tabling.util.extension.setImageDrawableWithColorFilter
 import org.sopt.tabling.util.extension.setRatingBar
 
@@ -268,42 +270,28 @@ class ShopDetailActivity :
             )
             tvShopDetailRecentReviewTotalStarContext.text = shopDetail.averageStar.toString()
             includeShopDetailRecentReviewTotalStar.setRatingBar(shopDetail.averageStar)
-            includeShopDetailRecentReviewDetailStarFoodTaste.tvProgressBarTitle.text =
-                getString(R.string.shop_detail_recent_review_food_taste)
-            includeShopDetailRecentReviewDetailStarFoodTaste.pbProgressBar.progress =
-                convertDetailStarValue(shopDetail.detailStarList[FOOD_TASTE])
-            includeShopDetailRecentReviewDetailStarFoodTaste.tvProgressBarScore.text =
-                getString(
-                    R.string.shop_detail_recent_review_score,
-                    shopDetail.detailStarList[FOOD_TASTE]
-                )
-            includeShopDetailRecentReviewDetailStarMood.tvProgressBarTitle.text =
-                getString(R.string.shop_detail_recent_review_mood)
-            includeShopDetailRecentReviewDetailStarMood.pbProgressBar.progress =
-                convertDetailStarValue(shopDetail.detailStarList[MOOD])
-            includeShopDetailRecentReviewDetailStarMood.tvProgressBarScore.text =
-                getString(
-                    R.string.shop_detail_recent_review_score,
-                    shopDetail.detailStarList[MOOD]
-                )
-            includeShopDetailRecentReviewDetailStarKindness.tvProgressBarTitle.text =
-                getString(R.string.shop_detail_recent_review_kindness)
-            includeShopDetailRecentReviewDetailStarKindness.pbProgressBar.progress =
-                convertDetailStarValue(shopDetail.detailStarList[KINDNESS])
-            includeShopDetailRecentReviewDetailStarKindness.tvProgressBarScore.text =
-                getString(
-                    R.string.shop_detail_recent_review_score,
-                    shopDetail.detailStarList[KINDNESS]
-                )
-            includeShopDetailRecentReviewDetailStarCleanliness.tvProgressBarTitle.text =
-                getString(R.string.shop_detail_recent_review_cleanliness)
-            includeShopDetailRecentReviewDetailStarCleanliness.pbProgressBar.progress =
-                convertDetailStarValue(shopDetail.detailStarList[CLEANLINESS])
-            includeShopDetailRecentReviewDetailStarCleanliness.tvProgressBarScore.text =
-                getString(
-                    R.string.shop_detail_recent_review_score,
-                    shopDetail.detailStarList[CLEANLINESS]
-                )
+
+            includeShopDetailRecentReviewDetailStarFoodTaste.setData(
+                this@ShopDetailActivity,
+                StarType.FOOD_TASTE,
+                shopDetail.detailStarList[FOOD_TASTE]
+            )
+            includeShopDetailRecentReviewDetailStarMood.setData(
+                this@ShopDetailActivity,
+                StarType.MOOD,
+                shopDetail.detailStarList[MOOD]
+            )
+            includeShopDetailRecentReviewDetailStarKindness.setData(
+                this@ShopDetailActivity,
+                StarType.KINDNESS,
+                shopDetail.detailStarList[KINDNESS]
+            )
+            includeShopDetailRecentReviewDetailStarCleanliness.setData(
+                this@ShopDetailActivity,
+                StarType.CLEANLINESS,
+                shopDetail.detailStarList[CLEANLINESS]
+            )
+
             shopDetailRecentReviewAdapter = ShopDetailRecentReviewAdapter()
             rvShopDetailRecentReview.adapter = shopDetailRecentReviewAdapter
             shopDetailRecentReviewAdapter.submitList(shopDetail.reviewList)
