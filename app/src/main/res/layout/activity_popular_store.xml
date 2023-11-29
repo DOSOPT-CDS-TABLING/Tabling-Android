@@ -59,7 +59,7 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cg_popular_store_area"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 app:singleLine="true"
                 app:singleSelection="true">
@@ -130,6 +130,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/popular_store_avg_personnel"
             android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+            android:textColor="@color/gray_400"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_popular_store_horizontal_1dp" />
 
@@ -139,6 +140,7 @@
             android:layout_height="wrap_content"
             android:text="@string/popular_store_standard"
             android:textAppearance="@style/TextAppearance.Caption1.Regular"
+            android:textColor="@color/gray_400"
             app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_avg_people_number"
             app:layout_constraintStart_toEndOf="@id/tv_popular_store_avg_people_number"
             app:layout_constraintTop_toTopOf="@id/tv_popular_store_avg_people_number" />
@@ -162,6 +164,7 @@
             android:layout_marginStart="2dp"
             android:text="@string/popular_store_BEST"
             android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+            android:textColor="@color/gray_800"
             app:layout_constraintBottom_toBottomOf="@id/tv_popular_store_area"
             app:layout_constraintStart_toEndOf="@id/tv_popular_store_area"
             app:layout_constraintTop_toTopOf="@id/tv_popular_store_area" />
@@ -169,13 +172,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular_store"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_store_area"
             tools:listitem="@layout/item_popular_store" />
 

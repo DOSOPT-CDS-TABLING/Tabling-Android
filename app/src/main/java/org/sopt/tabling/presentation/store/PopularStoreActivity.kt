@@ -2,7 +2,6 @@ package org.sopt.tabling.presentation.store
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityPopularStoreBinding
 import org.sopt.tabling.util.binding.BindingActivity
@@ -16,7 +15,7 @@ class PopularStoreActivity :
         super.onCreate(savedInstanceState)
         binding.storeViewModel = storeViewModel
 
-        storeViewModel.setDummyList()
+        storeViewModel.getPopularStoreList()
         initAdapter()
         setPopularStoreList()
     }
@@ -27,11 +26,8 @@ class PopularStoreActivity :
     }
 
     private fun setPopularStoreList() {
-        storeViewModel.popularStoreList.observe(
-            this,
-            Observer { storeList ->
-                popularStoreAdapter.setStoreList(storeList)
-            }
-        )
+        storeViewModel.popularStoreList.observe(this) { storeList ->
+            popularStoreAdapter.setStoreList(storeList)
+        }
     }
 }
