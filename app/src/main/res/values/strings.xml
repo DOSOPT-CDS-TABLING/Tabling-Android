@@ -3,7 +3,10 @@
 
     <!-- waiting detail -->
     <string name="waiting_detail">대기 상세</string>
-    <string name="waiting_ing">대기중이에요</string>
+    <string name="waiting_0">0</string>
+    <string name="waiting_status_ing">이용 예정</string>
+    <string name="waiting_ing">대기중이에요.</string>
+    <string name="waiting_done">이용이 완료되었어요.</string>
     <string name="waiting_number_primary">대기번호 #%d</string>
     <string name="front_waiting">내 앞 대기</string>
     <string name="front_waiting_number">%d</string>
