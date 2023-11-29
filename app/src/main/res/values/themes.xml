@@ -133,7 +133,15 @@
     <style name="Style.Material3.Chip.Suggestion.Waiting.Item" parent="Widget.Material3.Chip.Style">
         <item name="android:textAppearance">@style/TextAppearance.Caption2</item>
         <item name="chipStrokeColor">@android:color/transparent</item>
+        <item name="chipCornerRadius">4dp</item>
         <item name="android:checkable">false</item>
+        <item name="android:paddingVertical">2dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipMinHeight">2dp</item>
+        <item name="chipStartPadding">5dp</item>
+        <item name="chipEndPadding">5dp</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
     </style>
 
     <style name="Widget.Material3.Chip.Style.Radius95" parent="Widget.Material3.Chip.Style">
