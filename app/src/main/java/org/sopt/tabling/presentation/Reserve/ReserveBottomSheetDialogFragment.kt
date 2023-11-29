@@ -1,4 +1,4 @@
-package org.sopt.tabling.presentation.Reserve
+package org.sopt.tabling.presentation.reserve
 
 import android.os.Bundle
 import android.view.View
@@ -9,11 +9,14 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.DialogBottomReserveBinding
+import org.sopt.tabling.domain.model.Reserve
 import org.sopt.tabling.presentation.common.ViewModelFactory
+import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingBottomSheetDialogFragment
 
 class ReserveBottomSheetDialogFragment(
-    private val clickBtn: () -> Unit = {}
+    private val shopId: Long,
+    private val onReserveResponseSuccess: (Reserve) -> Unit
 ) : BindingBottomSheetDialogFragment<DialogBottomReserveBinding>(
     R.layout.dialog_bottom_reserve
 ) {
@@ -49,8 +52,7 @@ class ReserveBottomSheetDialogFragment(
 
     private fun addListeners() {
         binding.btnReserveApply.setOnClickListener {
-            clickBtn.invoke()
-            dismiss()
+            reserveViewModel.postReserve(shopId)
         }
 
         binding.ivReserveExit.setOnClickListener {
@@ -68,6 +70,20 @@ class ReserveBottomSheetDialogFragment(
                         R.drawable.ic_minus_black_24
                     }
                 )
+            }.launchIn(lifecycleScope)
+
+        reserveViewModel.postReserveState.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { uiState ->
+                when (uiState) {
+                    is UiState.Success -> {
+                        uiState.data?.let {
+                            onReserveResponseSuccess(it)
+                            dismiss()
+                        }
+                    }
+
+                    else -> Unit
+                }
             }.launchIn(lifecycleScope)
     }
 

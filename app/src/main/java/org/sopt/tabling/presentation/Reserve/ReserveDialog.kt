@@ -1,59 +1,37 @@
-package org.sopt.tabling.presentation.Reserve
+package org.sopt.tabling.presentation.reserve
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import org.sopt.tabling.R
 import org.sopt.tabling.databinding.DialogReserveBinding
+import org.sopt.tabling.domain.model.Reserve
 import org.sopt.tabling.presentation.store.PopularStoreActivity
+import org.sopt.tabling.util.binding.BindingDialogFragment
 
-class ReserveDialog : DialogFragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        isCancelable = true
-    }
-
-    private lateinit var binding: DialogReserveBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        binding = DialogReserveBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
+class ReserveDialog(
+    private val reserve: Reserve
+) : BindingDialogFragment<DialogReserveBinding>(R.layout.dialog_reserve) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 서버통신
-        var waitingNum = "86"
-        binding.tvWaitingNumber.text = waitingNum
+        initLayout()
+        addListeners()
+    }
 
-        var nowWaitingNum = "5"
-        binding.tvDialogNowWaitingNumber.text = nowWaitingNum
-
-        var shopName = "파이브가이즈 여의도"
-        binding.tvDialogStoreOutput.text = shopName
-
-        var personCount = "99"
-        binding.tvDialogStoreNumberOutput.text = personCount
-
-        var orderStatus = "확정 예정"
-        binding.tvDialogStoreStatusOutput.text = orderStatus
-
-        binding.ivIcExit24.setOnClickListener {
-            dismiss()
+    private fun initLayout() {
+        with(binding) {
+            tvWaitingNumber.text = reserve.waitingNumber.toString()
+            tvDialogNowWaitingNumber.text = reserve.beforeCount.toString()
+            tvDialogStoreOutput.text = reserve.shopName
+            tvDialogStoreNumberOutput.text = reserve.personCount.toString()
+            tvDialogStoreStatusOutput.text = reserve.orderStatus
         }
+    }
 
-        // 버튼 클릭 시 이동
+    private fun addListeners() {
         binding.btnDialogConfirm.setOnClickListener {
-            // 이용완료/예정 뷰로 이동
-            val intent = Intent(activity, PopularStoreActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), PopularStoreActivity::class.java))
         }
     }
 }
