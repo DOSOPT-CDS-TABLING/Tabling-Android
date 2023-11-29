@@ -54,43 +54,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="51dp"
+            android:layout_marginTop="5dp"
             tools:text="11월 13일 (월)"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_200"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/chip_reservation_wait"/>
 
         <TextView
             android:id="@+id/tv_reservation_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="51dp"
             android:text="@string/queue_tv_bar"
+            android:layout_marginTop="5dp"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_200"
-            app:layout_constraintStart_toEndOf="@id/tv_reservation_date"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/chip_reservation_wait"
+            app:layout_constraintStart_toEndOf="@id/tv_reservation_date" />
 
         <TextView
             android:id="@+id/tv_reservation_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="51dp"
+            android:layout_marginTop="5dp"
             tools:text="2명"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/gray_200"
             app:layout_constraintStart_toEndOf="@id/tv_reservation_bar"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/chip_reservation_wait" />
 
         <TextView
             android:id="@+id/tv_store_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="7.5dp"
+            android:layout_marginTop="8dp"
             tools:text="파이브가이즈 여의도"
             android:textAppearance="@style/TextAppearance.H0"
             android:textColor="@color/gray_700"
@@ -102,10 +102,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="7dp"
             android:src="@drawable/ic_arrow_front_31"
             app:layout_constraintStart_toEndOf="@id/tv_store_name"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_reservation_people" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_code"

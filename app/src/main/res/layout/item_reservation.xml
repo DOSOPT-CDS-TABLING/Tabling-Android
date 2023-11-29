@@ -104,10 +104,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="82dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_arrow_front_31"
             app:layout_constraintStart_toEndOf="@id/tv_store_name"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_reservation_people" />
 
         <TextView
             android:id="@+id/tv_waiting"
