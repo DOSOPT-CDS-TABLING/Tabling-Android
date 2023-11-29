@@ -20,7 +20,7 @@
     <string name="waiting_number_data">%d번</string>
     <string name="waiting_person_count">인원</string>
     <string name="waiting_person_data">%d명</string>
-    <string name="waiting_state">대기상s태</string>
+    <string name="waiting_state">대기상태</string>
     <string name="waiting_total_price">총 금액</string>
     <string name="waiting_total_price_data">%d원</string>
     <string name="waiting_request">요청사항</string>
