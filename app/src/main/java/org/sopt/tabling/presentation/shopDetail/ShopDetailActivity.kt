@@ -1,10 +1,9 @@
 package org.sopt.tabling.presentation.shopDetail
 
 import android.animation.ArgbEvaluator
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.view.ContextThemeWrapper
+import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
@@ -221,31 +220,15 @@ class ShopDetailActivity :
             tvShopDetailHomeRestDay.text = shopDetail.restDay
             tvShopDetailHomePhoneNumber.text = shopDetail.phoneNumber
 
+            val inflater = LayoutInflater.from(this@ShopDetailActivity)
             shopDetail.hashTagList.forEachIndexed { _, hashTag ->
-                cgShopDetailHomeShopPick.addView(
-                    Chip(
-                        ContextThemeWrapper(
-                            this@ShopDetailActivity,
-                            R.style.Widget_Material3_Chip_Style_Radius99_Pick
-                        )
-                    ).apply {
-                        text = hashTag
-                        setTextAppearance(R.style.TextAppearance_Caption1_SemiBold)
-                        setTextColor(
-                            ContextCompat.getColor(
-                                this@ShopDetailActivity,
-                                R.color.gray_400
-                            )
-                        )
-                        setEnsureMinTouchTargetSize(false)
-                        chipBackgroundColor = ColorStateList.valueOf(
-                            ContextCompat.getColor(
-                                this@ShopDetailActivity,
-                                R.color.white
-                            )
-                        )
-                    }
-                )
+                val chip = inflater.inflate(
+                    R.layout.view_shop_detail_pick_chip,
+                    binding.cgShopDetailHomeShopPick,
+                    false
+                ) as Chip
+                chip.text = hashTag
+                binding.cgShopDetailHomeShopPick.addView(chip)
             }
 
             tvShopDetailHomeIntroduceContent.text = shopDetail.introduceContent
