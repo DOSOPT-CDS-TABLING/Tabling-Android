@@ -1,23 +1,29 @@
 package org.sopt.tabling.presentation.shopDetail
 
 import android.animation.ArgbEvaluator
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
-import android.view.ContextThemeWrapper
+import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
+import org.sopt.tabling.domain.model.ShopDetail
 import org.sopt.tabling.presentation.common.ViewModelFactory
+import org.sopt.tabling.presentation.type.StarType
 import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
+import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingActivity
+import org.sopt.tabling.util.extension.setData
+import org.sopt.tabling.util.extension.setImageDrawableWithColorFilter
 import org.sopt.tabling.util.extension.setRatingBar
 
 class ShopDetailActivity :
@@ -34,53 +40,51 @@ class ShopDetailActivity :
 
         initLayout()
         addListeners()
+        collectData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        with(binding) {
+            vpShopDetailShopImg.adapter = null
+            rvShopDetailMenuList.adapter = null
+            rvShopDetailRecentReview.adapter = null
+        }
     }
 
     private fun initLayout() {
-        initShopImgViewPager()
-        initShopDetailAppBar()
-        initShopDetailHome()
-        initShopDetailMenuList()
-        initShopDetailRecentReview()
+        initAppBar()
         initTabLayout()
         initNestedScrollView()
     }
 
-    private fun initShopImgViewPager() {
-        shopDetailShopImgAdapter = ShopDetailShopImgAdapter()
-        binding.vpShopDetailShopImg.adapter = shopDetailShopImgAdapter
-        shopDetailShopImgAdapter.submitList(shopDetailViewModel.mockShopDetailInfo.detailPhotoList)
-        setTvShopDetailShopImgPageText(FIRST_POSITION)
-
-        binding.vpShopDetailShopImg.registerOnPageChangeCallback(object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    setTvShopDetailShopImgPageText(position)
-                }
-            }
-        )
+    private fun addListeners() {
+        binding.btnShopDetailReserve.setOnClickListener {
+            VisitPersonBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
+        }
     }
 
-    private fun initShopDetailAppBar() {
-        with(binding) {
-            shopDetailViewModel?.let { shopDetailViewModel ->
-                chipShopDetailWaiting.text = getString(
-                    R.string.shop_detail_waiting,
-                    shopDetailViewModel.mockShopDetailInfo.currentWaiting
-                )
-                tvShopDetailShopInfoName.text = shopDetailViewModel.mockShopDetailInfo.name
-                tvShopDetailShopInfoAddress.text =
-                    shopDetailViewModel.mockShopDetailInfo.longAddress
-                tvShopDetailInfoStar.text =
-                    shopDetailViewModel.mockShopDetailInfo.averageStar.toString()
-                includeShopDetailInfoStar.setRatingBar(shopDetailViewModel.mockShopDetailInfo.averageStar)
-                tvShopDetailInfoReviewCount.text = getString(
-                    R.string.shop_detail_review_count,
-                    shopDetailViewModel.mockShopDetailInfo.reviewCount
-                )
-            }
+    private fun collectData() {
+        shopDetailViewModel.getShopDetailState.flowWithLifecycle(lifecycle).onEach { uiState ->
+            when (uiState) {
+                is UiState.Success -> {
+                    uiState.data?.let { shopDetail ->
+                        setShopImgViewPager(shopDetail)
+                        setShopDetailAppBar(shopDetail)
+                        setShopDetailHome(shopDetail)
+                        setShopDetailMenuList(shopDetail)
+                        setShopDetailRecentReview(shopDetail)
+                    }
+                }
 
+                else -> Unit
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun initAppBar() {
+        with(binding) {
             ablShopDetail.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
                 val maxScroll = appBarLayout.totalScrollRange
                 val percentage = Math.abs(verticalOffset).toFloat() / maxScroll.toFloat()
@@ -99,142 +103,23 @@ class ShopDetailActivity :
                     ContextCompat.getColor(this@ShopDetailActivity, R.color.gray_800)
                 ) as Int
 
-                ivShopDetailBack.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_back_white_45
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailBack.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_back_white_45,
+                    iconEvaluator
                 )
 
-                ivShopDetailHeart.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_heart_white_24
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailHeart.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_heart_white_24,
+                    iconEvaluator
                 )
 
-                ivShopDetailShare.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@ShopDetailActivity,
-                        R.drawable.ic_share_white_24
-                    )?.mutate()?.apply {
-                        colorFilter = PorterDuffColorFilter(iconEvaluator, PorterDuff.Mode.SRC_IN)
-                    }
+                ivShopDetailShare.setImageDrawableWithColorFilter(
+                    this@ShopDetailActivity,
+                    R.drawable.ic_share_white_24,
+                    iconEvaluator
                 )
-            }
-        }
-    }
-
-    private fun initShopDetailHome() {
-        with(binding) {
-            shopDetailViewModel?.let { shopDetailViewModel ->
-                tvShopDetailHomeSalesTime.text = shopDetailViewModel.mockShopDetailInfo.salesTime
-                tvShopDetailHomeReserve.text = shopDetailViewModel.mockShopDetailInfo.waitingTime
-                tvShopDetailHomeRestTime.text = shopDetailViewModel.mockShopDetailInfo.restTime
-                tvShopDetailHomeRestDay.text = shopDetailViewModel.mockShopDetailInfo.restDay
-                tvShopDetailHomePhoneNumber.text =
-                    shopDetailViewModel.mockShopDetailInfo.phoneNumber
-
-                shopDetailViewModel.mockShopDetailInfo.hashTagList.forEachIndexed { index, hashTag ->
-                    cgShopDetailHomeShopPick.addView(
-                        Chip(
-                            ContextThemeWrapper(
-                                this@ShopDetailActivity,
-                                R.style.Widget_Material3_Chip_Style_Radius99_Pick
-                            )
-                        ).apply {
-                            text = hashTag
-                            setTextAppearance(R.style.TextAppearance_Caption1_SemiBold)
-                            setTextColor(
-                                ContextCompat.getColor(
-                                    this@ShopDetailActivity,
-                                    R.color.gray_400
-                                )
-                            )
-                            setEnsureMinTouchTargetSize(false)
-                            chipBackgroundColor = ColorStateList.valueOf(
-                                ContextCompat.getColor(
-                                    this@ShopDetailActivity,
-                                    R.color.white
-                                )
-                            )
-                        }
-                    )
-                }
-
-                tvShopDetailHomeIntroduceContent.text =
-                    shopDetailViewModel.mockShopDetailInfo.introduceContent
-            }
-        }
-    }
-
-    private fun initShopDetailMenuList() {
-        with(binding) {
-            shopDetailViewModel?.let { shopDetailViewModel ->
-                shopDetailMenuListAdapter = ShopDetailMenuListAdapter()
-                rvShopDetailMenuList.adapter = shopDetailMenuListAdapter
-                shopDetailMenuListAdapter.submitList(shopDetailViewModel.mockShopDetailInfo.menuList)
-                includeShopDetailMenuListDetailBtn.tvDetailBtn.text =
-                    getString(R.string.shop_detail_menu_list_full_menu_detail)
-            }
-        }
-    }
-
-    private fun initShopDetailRecentReview() {
-        with(binding) {
-            shopDetailViewModel?.let { shopDetailViewModel ->
-                tvShopDetailRecentReviewTitle.text = getString(
-                    R.string.shop_detail_recent_review_title,
-                    shopDetailViewModel.mockShopDetailInfo.reviewCount
-                )
-                tvShopDetailRecentReviewTotalStarContext.text =
-                    shopDetailViewModel.mockShopDetailInfo.averageStar.toString()
-                includeShopDetailRecentReviewTotalStar.setRatingBar(shopDetailViewModel.mockShopDetailInfo.averageStar)
-                includeShopDetailRecentReviewDetailStarFoodTaste.tvProgressBarTitle.text =
-                    getString(R.string.shop_detail_recent_review_food_taste)
-                includeShopDetailRecentReviewDetailStarFoodTaste.pbProgressBar.progress =
-                    convertDetailStarValue(shopDetailViewModel.mockShopDetailInfo.detailStarList[FOOD_TASTE])
-                includeShopDetailRecentReviewDetailStarFoodTaste.tvProgressBarScore.text =
-                    getString(
-                        R.string.shop_detail_recent_review_score,
-                        shopDetailViewModel.mockShopDetailInfo.detailStarList[FOOD_TASTE]
-                    )
-                includeShopDetailRecentReviewDetailStarMood.tvProgressBarTitle.text =
-                    getString(R.string.shop_detail_recent_review_mood)
-                includeShopDetailRecentReviewDetailStarMood.pbProgressBar.progress =
-                    convertDetailStarValue(shopDetailViewModel.mockShopDetailInfo.detailStarList[MOOD])
-                includeShopDetailRecentReviewDetailStarMood.tvProgressBarScore.text =
-                    getString(
-                        R.string.shop_detail_recent_review_score,
-                        shopDetailViewModel.mockShopDetailInfo.detailStarList[MOOD]
-                    )
-                includeShopDetailRecentReviewDetailStarKindness.tvProgressBarTitle.text =
-                    getString(R.string.shop_detail_recent_review_kindness)
-                includeShopDetailRecentReviewDetailStarKindness.pbProgressBar.progress =
-                    convertDetailStarValue(shopDetailViewModel.mockShopDetailInfo.detailStarList[KINDNESS])
-                includeShopDetailRecentReviewDetailStarKindness.tvProgressBarScore.text =
-                    getString(
-                        R.string.shop_detail_recent_review_score,
-                        shopDetailViewModel.mockShopDetailInfo.detailStarList[KINDNESS]
-                    )
-                includeShopDetailRecentReviewDetailStarCleanliness.tvProgressBarTitle.text =
-                    getString(R.string.shop_detail_recent_review_cleanliness)
-                includeShopDetailRecentReviewDetailStarCleanliness.pbProgressBar.progress =
-                    convertDetailStarValue(shopDetailViewModel.mockShopDetailInfo.detailStarList[CLEANLINESS])
-                includeShopDetailRecentReviewDetailStarCleanliness.tvProgressBarScore.text =
-                    getString(
-                        R.string.shop_detail_recent_review_score,
-                        shopDetailViewModel.mockShopDetailInfo.detailStarList[CLEANLINESS]
-                    )
-                shopDetailRecentReviewAdapter = ShopDetailRecentReviewAdapter()
-                rvShopDetailRecentReview.adapter = shopDetailRecentReviewAdapter
-                shopDetailRecentReviewAdapter.submitList(shopDetailViewModel.mockShopDetailInfo.reviewList)
-                includeShopDetailRecentReviewDetailBtn.tvDetailBtn.text =
-                    getString(R.string.shop_detail_recent_review_full_review_detail)
             }
         }
     }
@@ -269,7 +154,7 @@ class ShopDetailActivity :
 
     private fun initNestedScrollView() {
         binding.nsvShopDetailContent.setOnScrollChangeListener(
-            NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
                 when (scrollY) {
                     in binding.layoutShopDetailHome.top until binding.layoutShopDetailMenuList.top -> binding.tlShopDetail.setScrollPosition(
                         HOME,
@@ -293,9 +178,107 @@ class ShopDetailActivity :
         )
     }
 
-    private fun addListeners() {
-        binding.btnShopDetailReserve.setOnClickListener {
-            VisitPersonBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
+    private fun setShopImgViewPager(shopDetail: ShopDetail) {
+        shopDetailShopImgAdapter = ShopDetailShopImgAdapter()
+        binding.vpShopDetailShopImg.adapter = shopDetailShopImgAdapter
+        shopDetailShopImgAdapter.submitList(shopDetail.detailPhotoList)
+        setTvShopDetailShopImgPageText(FIRST_POSITION)
+
+        binding.vpShopDetailShopImg.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    setTvShopDetailShopImgPageText(position)
+                }
+            }
+        )
+    }
+
+    private fun setShopDetailAppBar(shopDetail: ShopDetail) {
+        with(binding) {
+            chipShopDetailWaiting.text = getString(
+                R.string.shop_detail_waiting,
+                shopDetail.currentWaiting
+            )
+            tvShopDetailShopInfoName.text = shopDetail.name
+            tvShopDetailShopInfoAddress.text = shopDetail.longAddress
+            tvShopDetailInfoStar.text = shopDetail.averageStar.toString()
+            includeShopDetailInfoStar.setRatingBar(shopDetail.averageStar)
+            tvShopDetailInfoReviewCount.text = getString(
+                R.string.shop_detail_review_count,
+                shopDetail.reviewCount
+            )
+        }
+    }
+
+    private fun setShopDetailHome(shopDetail: ShopDetail) {
+        with(binding) {
+            tvShopDetailHomeSalesTime.text = shopDetail.salesTime
+            tvShopDetailHomeReserve.text = shopDetail.waitingTime
+            tvShopDetailHomeRestTime.text = shopDetail.restTime
+            tvShopDetailHomeRestDay.text = shopDetail.restDay
+            tvShopDetailHomePhoneNumber.text = shopDetail.phoneNumber
+
+            val inflater = LayoutInflater.from(this@ShopDetailActivity)
+            shopDetail.hashTagList.forEachIndexed { _, hashTag ->
+                val chip = inflater.inflate(
+                    R.layout.view_shop_detail_pick_chip,
+                    binding.cgShopDetailHomeShopPick,
+                    false
+                ) as Chip
+                chip.text = hashTag
+                binding.cgShopDetailHomeShopPick.addView(chip)
+            }
+
+            tvShopDetailHomeIntroduceContent.text = shopDetail.introduceContent
+        }
+    }
+
+    private fun setShopDetailMenuList(shopDetail: ShopDetail) {
+        with(binding) {
+            shopDetailMenuListAdapter = ShopDetailMenuListAdapter()
+            rvShopDetailMenuList.adapter = shopDetailMenuListAdapter
+            shopDetailMenuListAdapter.submitList(shopDetail.menuList)
+            includeShopDetailMenuListDetailBtn.tvDetailBtn.text =
+                getString(R.string.shop_detail_menu_list_full_menu_detail)
+        }
+    }
+
+    private fun setShopDetailRecentReview(shopDetail: ShopDetail) {
+        with(binding) {
+            tvShopDetailRecentReviewTitle.text = getString(
+                R.string.shop_detail_recent_review_title,
+                shopDetail.reviewCount
+            )
+            tvShopDetailRecentReviewTotalStarContext.text = shopDetail.averageStar.toString()
+            includeShopDetailRecentReviewTotalStar.setRatingBar(shopDetail.averageStar)
+
+            includeShopDetailRecentReviewDetailStarFoodTaste.setData(
+                this@ShopDetailActivity,
+                StarType.FOOD_TASTE,
+                shopDetail.detailStarList[FOOD_TASTE]
+            )
+            includeShopDetailRecentReviewDetailStarMood.setData(
+                this@ShopDetailActivity,
+                StarType.MOOD,
+                shopDetail.detailStarList[MOOD]
+            )
+            includeShopDetailRecentReviewDetailStarKindness.setData(
+                this@ShopDetailActivity,
+                StarType.KINDNESS,
+                shopDetail.detailStarList[KINDNESS]
+            )
+            includeShopDetailRecentReviewDetailStarCleanliness.setData(
+                this@ShopDetailActivity,
+                StarType.CLEANLINESS,
+                shopDetail.detailStarList[CLEANLINESS]
+            )
+
+            shopDetailRecentReviewAdapter = ShopDetailRecentReviewAdapter()
+            rvShopDetailRecentReview.adapter = shopDetailRecentReviewAdapter
+            shopDetailRecentReviewAdapter.submitList(shopDetail.reviewList)
+            includeShopDetailRecentReviewDetailBtn.tvDetailBtn.text =
+                getString(R.string.shop_detail_recent_review_full_review_detail)
         }
     }
 
