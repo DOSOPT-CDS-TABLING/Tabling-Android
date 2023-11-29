@@ -1,4 +1,4 @@
-package org.sopt.tabling.presentation.dummy
+package org.sopt.tabling.presentation.Reserve
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,23 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import org.sopt.tabling.databinding.DialogWaitingBinding
+import org.sopt.tabling.databinding.DialogReserveBinding
 import org.sopt.tabling.presentation.store.PopularStoreActivity
 
-class WaitingDialog : DialogFragment() {
+class ReserveDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = true
     }
 
-    private lateinit var binding: DialogWaitingBinding
+    private lateinit var binding: DialogReserveBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = DialogWaitingBinding.inflate(inflater, container, false)
+        binding = DialogReserveBinding.inflate(inflater, container, false)
         return binding.root
     }
 

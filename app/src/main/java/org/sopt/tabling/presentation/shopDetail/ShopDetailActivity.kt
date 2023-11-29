@@ -15,8 +15,8 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
+import org.sopt.tabling.presentation.Reserve.ReserveBottomSheetDialogFragment
 import org.sopt.tabling.presentation.common.ViewModelFactory
-import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
 import org.sopt.tabling.util.binding.BindingActivity
 import org.sopt.tabling.util.extension.setRatingBar
 
@@ -295,7 +295,7 @@ class ShopDetailActivity :
 
     private fun addListeners() {
         binding.btnShopDetailReserve.setOnClickListener {
-            VisitPersonBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
+            ReserveBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
         }
     }
 
