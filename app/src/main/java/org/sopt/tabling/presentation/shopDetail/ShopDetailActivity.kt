@@ -181,12 +181,12 @@ class ShopDetailActivity :
         setTvShopDetailShopImgPageText(FIRST_POSITION)
 
         binding.vpShopDetailShopImg.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                setTvShopDetailShopImgPageText(position)
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    setTvShopDetailShopImgPageText(position)
+                }
             }
-        }
         )
     }
 
