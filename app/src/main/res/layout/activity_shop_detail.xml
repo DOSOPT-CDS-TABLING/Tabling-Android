@@ -541,8 +541,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing12"
+                            android:layout_marginEnd="@dimen/spacing16"
                             android:textAppearance="@style/TextAppearance.Body2.Regular"
                             android:textColor="@color/gray_800"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@id/gl_start"
                             app:layout_constraintTop_toBottomOf="@id/tv_shop_detail_home_introduce_content_title"
                             tools:text="파이브 가이즈 한국상륙!!!" />

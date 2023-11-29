@@ -6,6 +6,8 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.tabling.BuildConfig
+import org.sopt.tabling.data.service.ShopDetailService
+import org.sopt.tabling.data.service.PopularStoreService
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -27,5 +29,6 @@ object ApiFactory {
 }
 
 object ServicePool {
-    // TODO
+    val shopDetailService = ApiFactory.create<ShopDetailService>()
+    val popularStoreService = ApiFactory.create<PopularStoreService>()
 }
