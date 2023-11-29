@@ -43,6 +43,16 @@ class ShopDetailActivity :
         collectData()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        with(binding) {
+            vpShopDetailShopImg.adapter = null
+            rvShopDetailMenuList.adapter = null
+            rvShopDetailRecentReview.adapter = null
+        }
+    }
+
     private fun initLayout() {
         initAppBar()
         initTabLayout()
