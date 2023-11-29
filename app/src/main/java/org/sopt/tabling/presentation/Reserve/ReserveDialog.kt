@@ -33,5 +33,9 @@ class ReserveDialog(
         binding.btnDialogConfirm.setOnClickListener {
             startActivity(Intent(requireContext(), PopularStoreActivity::class.java))
         }
+
+        binding.ivIcExit24.setOnClickListener {
+            dismiss()
+        }
     }
 }
