@@ -10,7 +10,7 @@ data class ResponseApplyCodeDto(
     @SerialName("message")
     val message: String,
     @SerialName("data")
-    val data: List<Data>,
+    val data: Data,
 ) {
     @Serializable
     data class Data(
