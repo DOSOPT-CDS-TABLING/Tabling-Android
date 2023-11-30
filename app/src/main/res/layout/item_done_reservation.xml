@@ -112,6 +112,9 @@
             android:layout_width="282dp"
             android:layout_height="49dp"
             android:layout_marginStart="23dp"
+            android:paddingStart="96dp"
+            android:paddingEnd="86dp"
+            android:drawableStart="@drawable/ic_review_23"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="23dp"
             android:background="@drawable/shape_gray_100_line_8_rect"
@@ -121,6 +124,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_store_detail" />
+
 
         <TextView
             android:id="@+id/tv_remain_review"
