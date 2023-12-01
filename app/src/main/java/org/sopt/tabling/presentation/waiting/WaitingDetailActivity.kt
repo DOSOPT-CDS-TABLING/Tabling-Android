@@ -18,11 +18,18 @@ class WaitingDetailActivity :
         orderId = intent.getLongExtra(ORDER_ID, -1)
 
         initLayout()
+        addListeners()
         setWaitingDetailList()
     }
 
     private fun initLayout() {
         waitingViewModel.getWaitingDetail(orderId)
+    }
+
+    private fun addListeners() {
+        binding.ivWaitingDetailBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setWaitingDetailList() {
