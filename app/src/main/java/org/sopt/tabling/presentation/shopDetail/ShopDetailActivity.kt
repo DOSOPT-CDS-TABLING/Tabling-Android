@@ -16,10 +16,12 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
+import org.sopt.tabling.domain.model.Reserve
 import org.sopt.tabling.domain.model.ShopDetail
+import org.sopt.tabling.presentation.reserve.ReserveBottomSheetDialogFragment
+import org.sopt.tabling.presentation.reserve.ReserveDialog
 import org.sopt.tabling.presentation.common.ViewModelFactory
 import org.sopt.tabling.presentation.type.StarType
-import org.sopt.tabling.presentation.visitPerson.VisitPersonBottomSheetDialogFragment
 import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingActivity
 import org.sopt.tabling.util.extension.setData
@@ -32,14 +34,12 @@ class ShopDetailActivity :
     private lateinit var shopDetailShopImgAdapter: ShopDetailShopImgAdapter
     private lateinit var shopDetailMenuListAdapter: ShopDetailMenuListAdapter
     private lateinit var shopDetailRecentReviewAdapter: ShopDetailRecentReviewAdapter
-    private val convertDetailStarValue: (Float) -> Int = { value -> (value * 20).toInt() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.shopDetailViewModel = shopDetailViewModel
 
         initLayout()
-        addListeners()
         collectData()
     }
 
@@ -59,12 +59,6 @@ class ShopDetailActivity :
         initNestedScrollView()
     }
 
-    private fun addListeners() {
-        binding.btnShopDetailReserve.setOnClickListener {
-            VisitPersonBottomSheetDialogFragment().show(supportFragmentManager, VISIT_PERSON)
-        }
-    }
-
     private fun collectData() {
         shopDetailViewModel.getShopDetailState.flowWithLifecycle(lifecycle).onEach { uiState ->
             when (uiState) {
@@ -75,6 +69,8 @@ class ShopDetailActivity :
                         setShopDetailHome(shopDetail)
                         setShopDetailMenuList(shopDetail)
                         setShopDetailRecentReview(shopDetail)
+
+                        addShopDetailReserveListeners(shopDetail.shopId)
                     }
                 }
 
@@ -290,6 +286,19 @@ class ShopDetailActivity :
         )
     }
 
+    private fun addShopDetailReserveListeners(shopId: Long) {
+        binding.btnShopDetailReserve.setOnClickListener {
+            ReserveBottomSheetDialogFragment(
+                shopId = shopId,
+                onReserveResponseSuccess = { reserve -> showReserveDialog(reserve) }
+            ).show(supportFragmentManager, VISIT_PERSON)
+        }
+    }
+
+    private fun showReserveDialog(reserve: Reserve) {
+        ReserveDialog(reserve = reserve).show(supportFragmentManager, RESERVE_DIALOG)
+    }
+
     companion object {
         const val FIRST_POSITION = 0
         const val Y_VALUE = 0
@@ -301,5 +310,6 @@ class ShopDetailActivity :
         const val MENU_LIST = 1
         const val RECENT_REVIEW = 2
         const val VISIT_PERSON = "visitPersonBottomSheetDialogFragment"
+        const val RESERVE_DIALOG = "reserveDialog"
     }
 }
