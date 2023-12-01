@@ -16,7 +16,7 @@ class PopularStoreAdapter(
     private var storeList = listOf<ResponsePopularStoreDto.StoreData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             POPULAR_STORE_WITH_TITLE -> PopularStoreWithTitleViewHolder(
                 ItemPopularStoreWithTitleBinding.inflate(inflater, parent, false),
                 moveToShopDetail
@@ -38,10 +38,11 @@ class PopularStoreAdapter(
         }
     }
 
-    override fun getItemViewType(position: Int): Int = when(position) {
+    override fun getItemViewType(position: Int): Int = when (position) {
         FIRST_POSITION -> POPULAR_STORE_WITH_TITLE
         else -> POPULAR_STORE
     }
+
     fun setStoreList(storeDataList: List<ResponsePopularStoreDto.StoreData>) {
         storeList = storeDataList
         notifyDataSetChanged()
