@@ -83,6 +83,7 @@
         <item name="chipEndPadding">0dp</item>
         <item name="chipStartPadding">0dp</item>
         <item name="android:checked">false</item>
+        <item name="chipMinHeight">0dp</item>
         <item name="rippleColor">@android:color/transparent</item>
         <item name="android:clickable">false</item>
     </style>
@@ -102,7 +103,10 @@
         <item name="textEndPadding">12dp</item>
         <item name="chipStrokeWidth">0.8dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Caption1.SemiBold</item>
+        <item name="rippleColor">@android:color/transparent</item>
         <item name="android:textColor">@color/gray_400</item>
+        <item name="android:checkable">false</item>
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
     <style name="Widget.Material3.Chip.Style.Radius4.ShopDetailWaiting" parent="Widget.Material3.Chip.Style.Radius4">
@@ -129,7 +133,15 @@
     <style name="Style.Material3.Chip.Suggestion.Waiting.Item" parent="Widget.Material3.Chip.Style">
         <item name="android:textAppearance">@style/TextAppearance.Caption2</item>
         <item name="chipStrokeColor">@android:color/transparent</item>
+        <item name="chipCornerRadius">4dp</item>
         <item name="android:checkable">false</item>
+        <item name="android:paddingVertical">2dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipMinHeight">2dp</item>
+        <item name="chipStartPadding">5dp</item>
+        <item name="chipEndPadding">5dp</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
     </style>
 
     <style name="Widget.Material3.Chip.Style.Radius95" parent="Widget.Material3.Chip.Style">

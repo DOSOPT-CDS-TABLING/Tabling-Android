@@ -8,6 +8,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.tabling.BuildConfig
 import org.sopt.tabling.data.service.ApplyCodeService
 import org.sopt.tabling.data.service.ReservationListService
+import org.sopt.tabling.data.service.ShopDetailService
+import org.sopt.tabling.data.service.PopularStoreService
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -31,4 +33,6 @@ object ApiFactory {
 object ServicePool {
     val reservationListService = ApiFactory.create<ReservationListService>()
     val applyCodeService = ApiFactory.create<ApplyCodeService>()
+    val shopDetailService = ApiFactory.create<ShopDetailService>()
+    val popularStoreService = ApiFactory.create<PopularStoreService>()
 }
