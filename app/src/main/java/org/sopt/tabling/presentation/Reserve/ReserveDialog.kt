@@ -6,7 +6,7 @@ import android.view.View
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.DialogReserveBinding
 import org.sopt.tabling.domain.model.Reserve
-import org.sopt.tabling.presentation.store.PopularStoreActivity
+import org.sopt.tabling.presentation.queue.QueueDetailsActivity
 import org.sopt.tabling.util.binding.BindingDialogFragment
 
 class ReserveDialog(
@@ -31,7 +31,7 @@ class ReserveDialog(
 
     private fun addListeners() {
         binding.btnDialogConfirm.setOnClickListener {
-            startActivity(Intent(requireContext(), PopularStoreActivity::class.java))
+            startActivity(Intent(requireContext(), QueueDetailsActivity::class.java))
         }
 
         binding.ivIcExit24.setOnClickListener {
