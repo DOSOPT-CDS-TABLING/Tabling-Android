@@ -48,6 +48,7 @@
     <string name="queue_tv_remain_review">"리뷰 작성 기간이 "</string>
     <string name="queue_tv_remain_review_num">2일</string>
     <string name="queue_tv_remain_review2">" 남았어요!"</string>
+    <string name="queue_review_end">리뷰 작성 기간이 지났어요.</string>
 
     <!-- popular store -->
     <string name="area_seoul_south">서울 남부</string>
