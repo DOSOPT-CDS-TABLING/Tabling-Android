@@ -44,6 +44,7 @@ class ShopDetailActivity :
         shopId = intent.getLongExtra(SHOP_ID, -1)
 
         initLayout()
+        addListeners()
         collectData()
     }
 
@@ -63,6 +64,12 @@ class ShopDetailActivity :
         initAppBar()
         initTabLayout()
         initNestedScrollView()
+    }
+
+    private fun addListeners() {
+        binding.ivShopDetailBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun collectData() {
