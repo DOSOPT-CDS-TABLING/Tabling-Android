@@ -26,8 +26,8 @@ class WaitingDetailActivity :
     }
 
     private fun setWaitingDetailList() {
-        waitingViewModel.waitingDetail.observe(this) { waitingDetailList ->
-            binding.waitingData = waitingDetailList
+        waitingViewModel.waitingDetail.observe(this) { waitingDetail ->
+            binding.waitingData = waitingDetail
         }
     }
 }
