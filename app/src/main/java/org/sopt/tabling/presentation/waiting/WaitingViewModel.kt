@@ -14,7 +14,7 @@ class WaitingViewModel : ViewModel() {
         MutableLiveData<ResponseWaitingDetailDto.WaitingDetailData>()
     val waitingDetail: LiveData<ResponseWaitingDetailDto.WaitingDetailData> = _waitingDetail
 
-    fun getWaitingDetail(orderId: Int) {
+    fun getWaitingDetail(orderId: Long) {
         viewModelScope.launch {
             val response =
                 runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }

@@ -15,11 +15,7 @@ class ShopDetailViewModel(
     private val _getShopDetailState = MutableStateFlow<UiState<ShopDetail?>>(UiState.Empty)
     val getShopDetailState = _getShopDetailState.asStateFlow()
 
-    init {
-        getShopDetail()
-    }
-
-    private fun getShopDetail(shopId: Long = 2) {
+    fun getShopDetail(shopId: Long) {
         viewModelScope.launch {
             _getShopDetailState.value = UiState.Loading
             shopDetailRepository.getShopDetail(shopId).onSuccess { shopDetail ->

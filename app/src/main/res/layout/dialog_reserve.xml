@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -265,6 +264,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_dialog_confirm"
+                style="@style/Widget.FullButton.Basic"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"

@@ -18,9 +18,10 @@ import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityShopDetailBinding
 import org.sopt.tabling.domain.model.Reserve
 import org.sopt.tabling.domain.model.ShopDetail
+import org.sopt.tabling.presentation.common.ViewModelFactory
 import org.sopt.tabling.presentation.reserve.ReserveBottomSheetDialogFragment
 import org.sopt.tabling.presentation.reserve.ReserveDialog
-import org.sopt.tabling.presentation.common.ViewModelFactory
+import org.sopt.tabling.presentation.store.PopularStoreActivity.Companion.SHOP_ID
 import org.sopt.tabling.presentation.type.StarType
 import org.sopt.tabling.util.UiState
 import org.sopt.tabling.util.binding.BindingActivity
@@ -34,12 +35,16 @@ class ShopDetailActivity :
     private lateinit var shopDetailShopImgAdapter: ShopDetailShopImgAdapter
     private lateinit var shopDetailMenuListAdapter: ShopDetailMenuListAdapter
     private lateinit var shopDetailRecentReviewAdapter: ShopDetailRecentReviewAdapter
+    private var shopId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.shopDetailViewModel = shopDetailViewModel
 
+        shopId = intent.getLongExtra(SHOP_ID, -1)
+
         initLayout()
+        addListeners()
         collectData()
     }
 
@@ -54,9 +59,17 @@ class ShopDetailActivity :
     }
 
     private fun initLayout() {
+        shopDetailViewModel.getShopDetail(shopId)
+
         initAppBar()
         initTabLayout()
         initNestedScrollView()
+    }
+
+    private fun addListeners() {
+        binding.ivShopDetailBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun collectData() {

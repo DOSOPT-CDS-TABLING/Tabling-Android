@@ -12,6 +12,7 @@ import org.sopt.tabling.databinding.ItemReservationBinding
 class ReservationAdapter(
     context: Context,
     private val patchOnClick: (Int) -> Unit,
+    private val moveToWaiting: (Long) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
 
@@ -22,14 +23,17 @@ class ReservationAdapter(
             1 -> ReservationViewHolder(
                 ItemReservationBinding.inflate(inflater, parent, false),
                 patchOnClick,
+                moveToWaiting
             )
 
             2 -> ReservationDoneViewHolder(
                 ItemDoneReservationBinding.inflate(inflater, parent, false),
+                moveToWaiting
             )
 
             3 -> ReservationNoneViewHolder(
                 ItemNoneReservationBinding.inflate(inflater, parent, false),
+                moveToWaiting
             )
 
             else -> throw RuntimeException()

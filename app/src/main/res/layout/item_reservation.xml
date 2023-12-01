@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/block"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:clipToPadding="false"
@@ -11,9 +11,10 @@
     android:paddingVertical="@dimen/spacing4">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/spacing20"
         android:background="@drawable/shape_white_line_8_rect"
         android:elevation="@dimen/spacing4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,6 +149,7 @@
             android:id="@+id/tv_waiting_info_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="7dp"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
             android:textColor="@color/primary"
@@ -157,7 +159,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_delay"
-            android:layout_width="wrap_content"
+            style="@style/Widget.OutlinedButton.State"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
             android:layout_marginTop="24dp"
@@ -172,7 +175,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_code"
-            android:layout_width="wrap_content"
+            style="@style/Widget.OutlinedButton.State"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
             android:layout_marginTop="8dp"

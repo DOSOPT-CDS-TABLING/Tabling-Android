@@ -19,16 +19,52 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_waiting_detail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_height_56"
             android:background="@color/white"
+            app:contentInsetStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_waiting_detail_tb"
-            app:navigationIcon="@drawable/ic_back_button_gray_600_45"
-            app:title="@string/waiting_detail"
-            app:titleTextAppearance="@style/TextAppearance.H2"
-            app:titleTextColor="@color/gray_800" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_waiting_detail_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_waiting_detail_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back_gray_800_45"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_waiting_detail_app_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/waiting_detail"
+                    android:textAppearance="@style/TextAppearance.H2"
+                    android:textColor="@color/gray_800"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_waiting_detail_back"
+                    app:layout_constraintStart_toEndOf="@+id/iv_waiting_detail_back"
+                    app:layout_constraintTop_toTopOf="@+id/iv_waiting_detail_back" />
+
+                <ImageView
+                    android:id="@+id/iv_waiting_detail_app_bar_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:src="@drawable/ic_refresh_gray_600_45"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <TextView
             android:id="@+id/tv_waiting_detail_ing"
@@ -36,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginTop="5dp"
-            android:text="@{waitingData.orderStatus == @string/waiting_status_ing ? @string/waiting_ing : @string/waiting_done}"
+            android:text="@{waitingData.orderStatus.equals(@string/waiting_status_ing) ? @string/waiting_ing : @string/waiting_done}"
             android:textAppearance="@style/TextAppearance.Caption2"
             android:textColor="@color/gray_300"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,12 +98,13 @@
             android:layout_marginTop="3dp"
             android:text="@{@string/waiting_number_primary(waitingData.waitingNumber)}"
             android:textAppearance="@style/TextAppearance.H2"
-            android:textColor="@{waitingData.orderStatus == @string/waiting_status_ing ? @color/primary : @color/gray_100}"
+            android:textColor="@{waitingData.orderStatus.equals(@string/waiting_status_ing) ? @color/primary : @color/gray_100}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_name"
             tools:text="@string/waiting_number_primary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_waiting_detail_front_waiting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
@@ -94,9 +131,9 @@
                 android:id="@+id/tv_front_waiting_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{waitingData.orderStatus == @string/waiting_status_ing ? @string/front_waiting_number(waitingData.beforeCount) : @string/waiting_0}"
+                android:text="@{waitingData.orderStatus.equals(@string/waiting_status_ing) ? @string/front_waiting_number(waitingData.beforeCount) : @string/waiting_0}"
                 android:textAppearance="@style/TextAppearance.H1"
-                android:textColor="@{waitingData.orderStatus == @string/waiting_status_ing ? @color/primary : @color/white}"
+                android:textColor="@{waitingData.orderStatus.equals(@string/waiting_status_ing) ? @color/primary : @color/white}"
                 app:layout_constraintEnd_toStartOf="@id/tv_front_waiting_team"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
@@ -114,49 +151,119 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_front_waiting" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btn_waiting_detail_call"
-            style="@style/Style.Material3.Button.Outlined.Custom"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_waiting_detail_call"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/call"
-            app:icon="@drawable/ic_call_gray_500_24"
-            app:layout_constraintBottom_toTopOf="@id/view_waiting_horizontal_3dp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_waiting_detail_location"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/shape_gray_100_line_8_rect"
+            app:layout_constraintEnd_toStartOf="@id/layout_waiting_detail_location"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_number" />
+            app:layout_constraintStart_toStartOf="@+id/tv_waiting_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/layout_waiting_detail_front_waiting">
 
-        <Button
-            android:id="@+id/btn_waiting_detail_location"
-            style="@style/Style.Material3.Button.Outlined.Custom"
+            <ImageView
+                android:id="@+id/iv_waiting_detail_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="7dp"
+                android:src="@drawable/ic_call_gray_500_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_waiting_detail_call"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_waiting_detail_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/call"
+                android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_waiting_detail_call"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_waiting_detail_call"
+                app:layout_constraintTop_toTopOf="@+id/iv_waiting_detail_call" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_waiting_detail_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/location"
-            app:icon="@drawable/ic_location_gray_500_24"
-            app:layout_constraintBottom_toBottomOf="@id/btn_waiting_detail_call"
-            app:layout_constraintEnd_toStartOf="@+id/btn_waiting_detail_store"
-            app:layout_constraintStart_toEndOf="@+id/btn_waiting_detail_call"
-            app:layout_constraintTop_toTopOf="@id/btn_waiting_detail_call" />
+            android:layout_marginStart="@dimen/spacing16"
+            android:background="@drawable/shape_gray_100_line_8_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_waiting_detail_call"
+            app:layout_constraintEnd_toStartOf="@id/layout_waiting_detail_store"
+            app:layout_constraintStart_toEndOf="@+id/layout_waiting_detail_call"
+            app:layout_constraintTop_toTopOf="@+id/layout_waiting_detail_call">
 
-        <Button
-            android:id="@+id/btn_waiting_detail_store"
-            style="@style/Style.Material3.Button.Outlined.Custom"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_waiting_detail_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="7dp"
+                android:src="@drawable/ic_location_gray_500_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_waiting_detail_location"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_waiting_detail_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/location"
+                android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_waiting_detail_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_waiting_detail_location"
+                app:layout_constraintTop_toTopOf="@+id/iv_waiting_detail_location" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_waiting_detail_store"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="17dp"
-            android:paddingEnd="15dp"
-            android:layout_marginStart="16dp"
-            android:text="@string/store_detail"
-            app:icon="@drawable/ic_store_gray_500_24"
-            app:layout_constraintBottom_toBottomOf="@id/btn_waiting_detail_call"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_waiting_detail_location"
-            app:layout_constraintTop_toBottomOf="@id/tv_waiting_detail_number"
-            app:layout_constraintTop_toTopOf="@id/btn_waiting_detail_call" />
+            android:layout_marginStart="@dimen/spacing16"
+            android:background="@drawable/shape_gray_100_line_8_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_waiting_detail_location"
+            app:layout_constraintEnd_toEndOf="@+id/layout_waiting_detail_front_waiting"
+            app:layout_constraintStart_toEndOf="@+id/layout_waiting_detail_location"
+            app:layout_constraintTop_toTopOf="@+id/layout_waiting_detail_location">
+
+            <ImageView
+                android:id="@+id/iv_waiting_detail_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="7dp"
+                android:src="@drawable/ic_store_gray_500_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_waiting_detail_store"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_waiting_detail_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/store_detail"
+                android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_waiting_detail_store"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_waiting_detail_store"
+                app:layout_constraintTop_toTopOf="@+id/iv_waiting_detail_store" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/view_waiting_horizontal_3dp"
@@ -168,7 +275,7 @@
             android:background="@color/gray_000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_waiting_detail_call" />
+            app:layout_constraintTop_toBottomOf="@id/layout_waiting_detail_call" />
 
         <TextView
             android:id="@+id/tv_waiting_detail_info"
@@ -351,7 +458,7 @@
             android:layout_marginTop="8dp"
             android:text="@{waitingData.requestContent}"
             android:textAppearance="@style/TextAppearance.Body2.SemiBold"
-            android:textColor="@color/gray_000"
+            android:textColor="@color/gray_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_waiting_horizontal_3dp_sec"
             tools:text="@string/waiting_request_default" />

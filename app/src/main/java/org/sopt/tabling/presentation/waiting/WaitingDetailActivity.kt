@@ -4,24 +4,37 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityWaitingDetailBinding
+import org.sopt.tabling.presentation.queue.QueueReservationFragment.Companion.ORDER_ID
 import org.sopt.tabling.util.binding.BindingActivity
 
 class WaitingDetailActivity :
     BindingActivity<ActivityWaitingDetailBinding>(R.layout.activity_waiting_detail) {
     private val waitingViewModel by viewModels<WaitingViewModel>()
+    private var orderId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // View 연결 전 임의로 설정한 orderId
-        val orderId = 2
-        waitingViewModel.getWaitingDetail(orderId)
+        orderId = intent.getLongExtra(ORDER_ID, -1)
+
+        initLayout()
+        addListeners()
         setWaitingDetailList()
     }
 
+    private fun initLayout() {
+        waitingViewModel.getWaitingDetail(orderId)
+    }
+
+    private fun addListeners() {
+        binding.ivWaitingDetailBack.setOnClickListener {
+            finish()
+        }
+    }
+
     private fun setWaitingDetailList() {
-        waitingViewModel.waitingDetail.observe(this) { waitingDetailList ->
-            binding.waitingData = waitingDetailList
+        waitingViewModel.waitingDetail.observe(this) { waitingDetail ->
+            binding.waitingData = waitingDetail
         }
     }
 }

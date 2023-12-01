@@ -4,7 +4,10 @@ import androidx.recyclerview.widget.RecyclerView
 import org.sopt.tabling.data.model.response.ResponseReservationDto
 import org.sopt.tabling.databinding.ItemDoneReservationBinding
 
-class ReservationDoneViewHolder(private val binding: ItemDoneReservationBinding) :
+class ReservationDoneViewHolder(
+    private val binding: ItemDoneReservationBinding,
+    private val moveToWaiting: (Long) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
     fun onBind(item: ResponseReservationDto.Reservation) {
         binding.chipReservationWait.text = item.orderStatus
@@ -12,5 +15,9 @@ class ReservationDoneViewHolder(private val binding: ItemDoneReservationBinding)
         binding.tvReservationPeople.text = item.personCount.toString() + "명"
         binding.tvStoreName.text = item.shopName
         binding.tvRemainReviewNum.text = item.remainingReviewPeriod.toString() + "일"
+
+        binding.tvShowDetail.setOnClickListener {
+            moveToWaiting(item.orderId.toLong())
+        }
     }
 }

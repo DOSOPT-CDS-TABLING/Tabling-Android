@@ -7,6 +7,7 @@ import org.sopt.tabling.databinding.ItemReservationBinding
 class ReservationViewHolder(
     private val binding: ItemReservationBinding,
     private val patchOnClick: (Int) -> Unit,
+    private val moveToWaiting: (Long) -> Unit
 ) :
     RecyclerView.ViewHolder(binding.root) {
     fun onBind(item: ResponseReservationDto.Reservation) {
@@ -19,6 +20,10 @@ class ReservationViewHolder(
 
         binding.btnCode.setOnClickListener {
             patchOnClick(item.orderId)
+        }
+
+        binding.tvShowDetail.setOnClickListener {
+            moveToWaiting(item.orderId.toLong())
         }
     }
 }
