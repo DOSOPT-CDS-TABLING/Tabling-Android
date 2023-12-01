@@ -16,5 +16,13 @@ class QueueDetailsActivity :
                 .add(R.id.fcv_reservation, QueueReservationFragment())
                 .commit()
         }
+
+        addListeners()
+    }
+
+    private fun addListeners() {
+        binding.ivQueueDetailBack.setOnClickListener {
+            finish()
+        }
     }
 }
