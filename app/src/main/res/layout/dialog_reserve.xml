@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/shape_fill_8_rect"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_dialog_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="45dp"
+                android:text="@string/tv_dialog_complete"
+                android:textAppearance="@style/TextAppearance.H1"
+                android:textColor="@color/secondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_dialog_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="45dp"
+                android:text="@string/tv_dialog_complete2"
+                android:textAppearance="@style/TextAppearance.H1"
+                android:textColor="@color/gray_700"
+                app:layout_constraintStart_toEndOf="@id/tv_dialog_request"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_ic_exit_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_exit_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_waiting_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing14"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_gray_600_fill_4"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_dialog_complete">
+
+                <ImageView
+                    android:id="@+id/iv_ic_dialog_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:src="@drawable/ic_waiting_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_waiting_number_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/tv_waiting_number_text"
+                    android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                    android:textColor="@color/secondary_2"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_ic_dialog_circle"
+                    app:layout_constraintStart_toEndOf="@id/iv_ic_dialog_circle"
+                    app:layout_constraintTop_toTopOf="@+id/iv_ic_dialog_circle" />
+
+                <TextView
+                    android:id="@+id/tv_waiting_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/tv_waiting_number"
+                    android:textAppearance="@style/TextAppearance.H0"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_waiting_number_text"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_waiting_number_bun"
+                    app:layout_constraintTop_toTopOf="@+id/tv_waiting_number_text" />
+
+                <TextView
+                    android:id="@+id/tv_waiting_number_bun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:text="@string/tv_waiting_number_bun"
+                    android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                    android:textColor="@color/gray_200"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_waiting_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_waiting_number" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/iv_ic_info_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_waiting_number"
+                app:srcCompat="@drawable/ic_info_24" />
+
+            <TextView
+                android:id="@+id/tv_dialog_now_waiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="17dp"
+                android:text="@string/tv_dialog_now_waiting"
+                android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+                android:textColor="@color/primary"
+                app:layout_constraintStart_toEndOf="@+id/iv_ic_info_24"
+                app:layout_constraintTop_toBottomOf="@+id/layout_waiting_number" />
+
+            <TextView
+                android:id="@+id/tv_dialog_now_waiting_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="17dp"
+                android:text="@string/tv_dialog_now_waiting_number"
+                android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+                android:textColor="@color/primary"
+                app:layout_constraintStart_toEndOf="@+id/tv_dialog_now_waiting"
+                app:layout_constraintTop_toBottomOf="@+id/layout_waiting_number" />
+
+            <TextView
+                android:id="@+id/tv_dialog_now_waiting2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="17dp"
+                android:text="@string/tv_dialog_now_waiting2"
+                android:textAppearance="@style/TextAppearance.Caption1.SemiBold"
+                android:textColor="@color/primary"
+                app:layout_constraintStart_toEndOf="@+id/tv_dialog_now_waiting_number"
+                app:layout_constraintTop_toBottomOf="@+id/layout_waiting_number" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_waiting_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/shape_gray_000_fill_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_ic_info_24">
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/tv_dialog_store_name"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_200"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/tv_dialog_store_output"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_300"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tv_dialog_store_number"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_200"
+                    app:layout_constraintStart_toStartOf="@+id/tv_dialog_store_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dialog_store_name" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_number_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tv_dialog_store_number_output"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_300"
+                    app:layout_constraintEnd_toStartOf="@id/tv_dialog_store_number_output_text"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dialog_store_output" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_number_output_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tv_dialog_store_number_output_text"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_300"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_dialog_store_output"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dialog_store_output" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/tv_dialog_store_status"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_200"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_dialog_store_number"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dialog_store_number"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_store_status_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/tv_dialog_store_status_output"
+                    android:textAppearance="@style/TextAppearance.Body2.SemiBold"
+                    android:textColor="@color/gray_300"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_dialog_store_number_output_text"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dialog_store_number_output_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/shape_primary_fill_8_rect"
+                android:paddingVertical="16dp"
+                android:text="@string/btn_dialog_confirm"
+                android:textAppearance="@style/TextAppearance.Body1.SemiBold"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/layout_waiting_info"
+                app:layout_constraintStart_toStartOf="@+id/layout_waiting_info"
+                app:layout_constraintTop_toBottomOf="@id/layout_waiting_info" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
