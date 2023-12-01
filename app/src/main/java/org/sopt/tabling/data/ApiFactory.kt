@@ -6,9 +6,10 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.tabling.BuildConfig
+import org.sopt.tabling.data.service.ApplyCodeService
 import org.sopt.tabling.data.service.PopularStoreService
+import org.sopt.tabling.data.service.ReservationListService
 import org.sopt.tabling.data.service.ReserveService
-import org.sopt.tabling.data.service.ShopDetailService
 import org.sopt.tabling.data.service.ShopDetailService
 import org.sopt.tabling.data.service.WaitingDetailService
 import retrofit2.Retrofit
@@ -19,7 +20,7 @@ object ApiFactory {
             HttpLoggingInterceptor().apply {
                 level =
                     if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            }
+            },
         ).build()
     }
     val retrofit: Retrofit by lazy {
@@ -32,6 +33,8 @@ object ApiFactory {
 }
 
 object ServicePool {
+    val reservationListService = ApiFactory.create<ReservationListService>()
+    val applyCodeService = ApiFactory.create<ApplyCodeService>()
     val waitingDetailService = ApiFactory.create<WaitingDetailService>()
     val shopDetailService = ApiFactory.create<ShopDetailService>()
     val popularStoreService = ApiFactory.create<PopularStoreService>()
