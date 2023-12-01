@@ -3,25 +3,26 @@ package org.sopt.tabling.presentation.waiting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import org.sopt.tabling.data.ServicePool
 import org.sopt.tabling.data.model.response.ResponseWaitingDetailDto
+import timber.log.Timber
 
 class WaitingViewModel : ViewModel() {
     private val _waitingDetail =
         MutableLiveData<ResponseWaitingDetailDto.WaitingDetailData>()
     val waitingDetail: LiveData<ResponseWaitingDetailDto.WaitingDetailData> = _waitingDetail
 
-    init {
-        _waitingDetail.value =
-            ResponseWaitingDetailDto.WaitingDetailData(
-                1,
-                "파이브가이즈 여의도",
-                66,
-                4,
-                "2023-11-21 (화) 11:23",
-                2,
-                "이용 예정",
-                0,
-                "맛있어요",
-            )
+    fun getWaitingDetail(orderId: Int) {
+        viewModelScope.launch {
+            val response =
+                runCatching { ServicePool.waitingDetailService.getWaitingDetail(orderId) }
+            response.onSuccess { data ->
+                _waitingDetail.value = data.waitingDetailData
+            }.onFailure {
+                Timber.d("서버 통신의 에러발생")
+            }
+        }
     }
 }
