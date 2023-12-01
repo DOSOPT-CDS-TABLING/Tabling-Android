@@ -7,20 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import org.sopt.tabling.data.model.response.ResponsePopularStoreDto
 import org.sopt.tabling.databinding.ItemPopularStoreBinding
 
-class PopularStoreAdapter(context: Context) :
-    RecyclerView.Adapter<PopularStoreAdapter.PopularStoreViewHolder>() {
+class PopularStoreAdapter(
+    private val context: Context,
+    private val moveToShopDetail: (Long) -> Unit
+) :
+    RecyclerView.Adapter<PopularStoreViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
     private var storeList = listOf<ResponsePopularStoreDto.StoreData>()
 
-    inner class PopularStoreViewHolder(val binding: ItemPopularStoreBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(storeData: ResponsePopularStoreDto.StoreData) {
-            binding.storeData = storeData
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularStoreViewHolder {
-        return PopularStoreViewHolder(ItemPopularStoreBinding.inflate(inflater, parent, false))
+        return PopularStoreViewHolder(
+            ItemPopularStoreBinding.inflate(inflater, parent, false),
+            moveToShopDetail
+        )
     }
 
     override fun getItemCount() = storeList.size

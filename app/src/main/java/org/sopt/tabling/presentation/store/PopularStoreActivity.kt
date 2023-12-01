@@ -1,9 +1,11 @@
 package org.sopt.tabling.presentation.store
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import org.sopt.tabling.R
 import org.sopt.tabling.databinding.ActivityPopularStoreBinding
+import org.sopt.tabling.presentation.shopDetail.ShopDetailActivity
 import org.sopt.tabling.util.binding.BindingActivity
 
 class PopularStoreActivity :
@@ -21,7 +23,7 @@ class PopularStoreActivity :
     }
 
     private fun initAdapter() {
-        popularStoreAdapter = PopularStoreAdapter(this)
+        popularStoreAdapter = PopularStoreAdapter(this, ::moveToShopDetail)
         binding.rvPopularStore.adapter = popularStoreAdapter
     }
 
@@ -29,5 +31,16 @@ class PopularStoreActivity :
         storeViewModel.popularStoreList.observe(this) { storeList ->
             popularStoreAdapter.setStoreList(storeList)
         }
+    }
+
+    private fun moveToShopDetail(shopId: Long) {
+        Intent(this@PopularStoreActivity, ShopDetailActivity::class.java).apply {
+            putExtra(SHOP_ID, shopId)
+            startActivity(this)
+        }
+    }
+
+    companion object {
+        const val SHOP_ID = "shopId"
     }
 }
