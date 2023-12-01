@@ -86,7 +86,6 @@ class QueueReservationFragment : Fragment() {
                         } else if (response.code() == 500) {
                             context!!.showToast("서버 에러 발생")
                         } else {
-                            context!!.showToast("변경이 완료되었습니다.")
                             setReservationList()
                         }
                     }
