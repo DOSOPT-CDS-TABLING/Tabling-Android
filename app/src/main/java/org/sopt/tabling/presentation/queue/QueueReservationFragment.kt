@@ -1,5 +1,6 @@
 package org.sopt.tabling.presentation.queue
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import org.sopt.tabling.data.model.request.RequestApplyCodeDto
 import org.sopt.tabling.data.model.response.ResponseApplyCodeDto
 import org.sopt.tabling.data.model.response.ResponseReservationDto
 import org.sopt.tabling.databinding.FragmentQueueReservationBinding
+import org.sopt.tabling.presentation.waiting.WaitingDetailActivity
 import org.sopt.tabling.util.extension.showToast
 import retrofit2.Call
 import retrofit2.Response
@@ -62,7 +64,8 @@ class QueueReservationFragment : Fragment() {
     }
 
     private fun setReservationAdapter(reserveList: List<ResponseReservationDto.Reservation>) {
-        val reservationAdapter = ReservationAdapter(requireContext(), ::patchApplyCode)
+        val reservationAdapter =
+            ReservationAdapter(requireContext(), ::patchApplyCode, ::moveToWaiting)
         reservationAdapter.setReservationList(reserveList)
         binding.rvReservationItems.adapter = reservationAdapter
     }
@@ -93,5 +96,16 @@ class QueueReservationFragment : Fragment() {
                     context!!.showToast("네트워크 에러 발생")
                 }
             })
+    }
+
+    private fun moveToWaiting(orderId: Long) {
+        Intent(requireContext(), WaitingDetailActivity::class.java).apply {
+            putExtra(ORDER_ID, orderId)
+            startActivity(this)
+        }
+    }
+
+    companion object {
+        const val ORDER_ID = "orderId"
     }
 }

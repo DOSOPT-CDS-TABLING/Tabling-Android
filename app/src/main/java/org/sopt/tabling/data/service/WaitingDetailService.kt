@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface WaitingDetailService {
     @GET("/orders/{order_id}")
-    suspend fun getWaitingDetail(@Path("order_id") orderId: Int): ResponseWaitingDetailDto
+    suspend fun getWaitingDetail(@Path("order_id") orderId: Long): ResponseWaitingDetailDto
 }
